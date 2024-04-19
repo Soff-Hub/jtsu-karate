@@ -18,10 +18,10 @@ export default function Home() {
                                 <div className="row align-items-end mt-20">
                                     <div className="col-lg-12 text-center">
                                         <div className="d-inline-block position-relative">
-                                            <h2 className="color-white mb-10 color-linear wow animate__animated animate__fadeIn">Maqolalar</h2>
+                                            <h2 className="color-white mb-10 color-linear wow animate__animated animate__fadeIn">Qonuniy hujjatlar</h2>
                                         </div>
                                         <p className="color-gray-500 text-base mb-20 wow animate__animated animate__fadeIn">
-                                            Sport sohasidagi eng so'ngi maqolalar bilan tanishing
+                                            Sport sohasidagi eng so'ngi Qonuniy hujjatlar bilan tanishing
                                         </p>
                                     </div>
                                     <div className="col-lg-12">

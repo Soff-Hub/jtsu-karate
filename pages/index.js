@@ -17,7 +17,6 @@ export default function Home() {
         try {
             const resp = await client.get(`common/video-tutorials/`)
             setVideo(resp.data);
-            console.log(resp.data);
         } catch (err) {
             console.log(err);
         }
@@ -37,7 +36,7 @@ export default function Home() {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-10 col-lg-12 mx-auto">
-                                <div className="banner banner-home2" style={{ position: 'relative' }}>
+                                <div className="banner banner-home2" style={{ position: 'relative !important' }}>
                                     <div className="hero-content"></div>
                                     <div className="hero-content-overlay"></div>
                                     <div className="text-center">

@@ -6028,10 +6028,10 @@ input {
 }
 
 .hero-content {
-  position: absolute;
-  display: block;
+  position: absolute !important;
   min-height: 500px;
-  min-width: 1600px;
+  max-width: 1600px;
+  width: 100%;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
@@ -6043,16 +6043,26 @@ input {
 
 .hero-content-overlay {
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  display: block;
+  position: absolute !important;
   min-height: 500px;
-  min-width: 1600px;
+  max-width: 1600px;
+  width: 100%;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
   z-index: -1;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 500px) {
+  .hero-content-overlay {
+    min-height: 350px;
+  }
+
+  .hero-content {
+    min-height: 200px;
+  }
 }
 
 .banner-home2 {

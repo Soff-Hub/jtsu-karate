@@ -46,30 +46,28 @@ export default function Home() {
                                         <div className="border-bottom border-gray-800 mt-10 mb-30" />
                                     </div>
                                 </div>
-                                <div className="mb-20">
-                                    <div className="row mb-10" data-masonry="{&quot;percentPosition&quot;: true }">
-                                        {videos.map((item, i) => (
-                                            <div className="col-lg-4" key={i}>
-                                                <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
-                                                    <div className="card-image mb-10">
-                                                        <Link href={`/videolar/1`}>
-                                                            <img src={`${item.image}`} alt="Genz" />
-                                                        </Link>
-                                                    </div>
-                                                    <div className="card-info">
-                                                        <Link href={`/videolar/1`}>
-                                                            <h5 className="color-white mt-10">{item.title}</h5>
-                                                        </Link>
-                                                        <div className="row align-items-center mt-10">
-                                                            <p className="text-truncate">
-                                                                {item?.description}
-                                                            </p>
-                                                        </div>
+                                <div className="row mb-10" data-masonry="{&quot;percentPosition&quot;: true }">
+                                    {videos.map((item, i) => (
+                                        <div className="col-lg-4" key={i}>
+                                            <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
+                                                <div className="card-image mb-10">
+                                                    <Link href={`/videolar/${item.id}`}>
+                                                        <img src={`${item.image}`} alt="Genz" />
+                                                    </Link>
+                                                </div>
+                                                <div className="card-info">
+                                                    <Link href={`/videolar/${item.id}`}>
+                                                        <h5 className="color-white mt-10">{item.title}</h5>
+                                                    </Link>
+                                                    <div className="row align-items-center mt-10">
+                                                        <p className="text-truncate">
+                                                            {item?.description}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))}
-                                    </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>

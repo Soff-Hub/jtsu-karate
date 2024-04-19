@@ -1,31 +1,30 @@
 import Link from "next/link";
 import Head from "next/head";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../../../components/layout/Layout";
 import { useEffect, useState } from "react";
-import client from "../../repositories/repository";
+import client from "../../../../repositories/repository";
 import { useRouter } from "next/router";
 
 export default function Home() {
 
-  const [video, setVideo] = useState([])
+  const [video, setVideo] = useState(null)
 
   const { query } = useRouter()
 
   async function getVideos() {
     try {
-      const resp = await client.get(`common/video-tutorials/${query?.slug}`)
+      const resp = await client.get(`common/video-tutorial-content/${query?.pid}`)
       setVideo(resp.data);
-      console.log(resp.data);
     } catch (err) {
       console.log(err);
     }
   }
 
   useEffect(() => {
-    if (query?.slug) {
+    if (query?.pid && query?.pid !== 'undefined') {
       getVideos()
     }
-  }, [query?.slug])
+  }, [query?.pid])
 
 
   return (
@@ -50,11 +49,7 @@ export default function Home() {
                   <div className="col-lg-8">
                     <div className="content-detail border-gray-800">
                       <div className="mt-20 mb-20">
-                        <img
-                          className="img-bdrd-16"
-                          src={video?.image}
-                          alt="Genz"
-                        />
+                        {video && <iframe width={'100%'} height="400px" src={`${video?.video_url.replace('youtube.com/watch?v=', 'youtube.com/embed/').replace('youtu.be/', 'youtube.com/embed/')}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
                       </div>
                       <p className="text-lg color-gray-500 mb-50">
                         {video?.description}
@@ -96,7 +91,7 @@ export default function Home() {
                             {
                               video?.similar ? (
                                 video.similar.map(item => (
-                                  <div className="item-post wow animate__animated animate__fadeIn">
+                                  <div key={item?.id} className="item-post wow animate__animated animate__fadeIn">
                                     <div className="image-post">
                                       <Link href={`/videolar/${item.id}`}>
                                         <img
@@ -129,7 +124,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Layout>
+      </Layout >
     </>
   );
 }
