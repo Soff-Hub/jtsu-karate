@@ -49,7 +49,7 @@ export default function Home() {
                                 <div className="row mt-10">
                                     {video?.contents ? video?.contents.map((item, i) => (
                                         <div className="col-lg-4" key={i}>
-                                            <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
+                                            <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up" style={{ position: 'relative' }}>
                                                 <div className="card-image mb-10">
                                                     <iframe width={'100%'}
                                                         height="100%"
@@ -67,6 +67,10 @@ export default function Home() {
                                                     <div className="row align-items-center mt-10">
                                                         <p className="">
                                                             {item?.description}
+                                                        </p>
+                                                        <p className="text-truncate d-flex align-items-center justify-content-end" style={{ position: 'absolute', bottom: '5px', right: 0 }}>
+                                                            <img src="/assets/imgs/page/homepage/view-icon.svg" />
+                                                            <span>{item.get_view_count} marta</span>
                                                         </p>
                                                     </div>
                                                 </div>
