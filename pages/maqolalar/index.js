@@ -29,27 +29,23 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className="box-list-posts mt-20">
-                                    <div className="row">
-                                        <div className="col-lg-8 m-auto">
-                                            <div className="box-list-posts mt-30">
-                                                {data.slice(0, 5).map((item, i) => (
-                                                    <div key={i} className="card-list-posts card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 wow animate__animated animate__fadeIn">
-                                                        <div className="card-image hover-up">
-                                                            <div>
-                                                                <img src="assets/imgs/page/healthy/author.png" alt="Genz" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-info"><Link href={`/maqolalar/1`}>
-                                                            <h3 className="mb-10 color-white">{item.title}</h3></Link>
-                                                            <p className="color-gray-500">Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far</p>
-                                                            <div className="row mt-20">
-                                                                <div className="col-7">12.12.2024</div>
-                                                            </div>
-                                                        </div>
+                                    <div className="row box-list-posts mt-30">
+                                        {data.slice(0, 5).map((item, i) => (
+                                            <div key={i} className="col-6 card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 wow animate__animated animate__fadeIn">
+                                                <div className="card-image hover-up">
+                                                    <div>
+                                                        <img src="https://st.jtsu.uz//elfinder-files/icons/pdf.png" alt="Genz" />
                                                     </div>
-                                                ))}
+                                                </div>
+                                                <div className="card-info"><Link href={`/maqolalar/`}>
+                                                    <h4 className="mb-10 color-white">{item.title}</h4></Link>
+                                                    {/* <p className="color-gray-500">Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far</p>
+                                                    <div className="row mt-20">
+                                                        <div className="col-7">12.12.2024</div>
+                                                    </div> */}
+                                                </div>
                                             </div>
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
