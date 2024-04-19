@@ -2728,7 +2728,7 @@ input {
 }
 
 .header .main-header .header-logo {
-  max-width: 150px;
+  max-width: 240px;
   width: 100%;
 }
 
@@ -3510,7 +3510,7 @@ input {
 }
 
 .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-top .mobile-header-logo a img {
-  width: 100px;
+  width: 140px;
 }
 
 .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area {
@@ -7811,6 +7811,10 @@ iframe.google-map {
 @media (max-width: 349.98px) {
   .list-9-col li {
     width: 50%;
+  }
+
+  .header .main-header .header-logo a img {
+    min-height: 0 !important;
   }
 
   .box-quantity {

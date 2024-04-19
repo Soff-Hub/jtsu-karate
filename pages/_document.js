@@ -9,7 +9,7 @@ class MyDocument extends Document {
                 href="https://fonts.bunny.net/css?family=noto-sans:400,500,700,800"
                 rel="stylesheet"
             />
-            <link rel="shortcut icon" href="/assets/imgs/page/logo/soff study logo.png" />
+            <link rel="shortcut icon" href="/assets/imgs/page/logo/logo-1.png" />
         </Head>
         <body>
           <Main />

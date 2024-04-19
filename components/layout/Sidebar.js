@@ -34,12 +34,12 @@ const Sidebar = ({ openClass }) => {
                 <img
                   className="logo-night"
                   alt="GenZ"
-                  src="/assets/imgs/page/logo/Soff Study white logo.png"
+                  src="/assets/imgs/page/logo/logo-1.png"
                 />
                 <img
                   className="d-none logo-day"
                   alt="GenZ"
-                  src="/assets/imgs/page/logo/Soff Study dark logo.png"
+                  src="/assets/imgs/page/logo/logo-1.png"
                 />
               </Link>
             </div>

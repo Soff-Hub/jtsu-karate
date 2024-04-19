@@ -42,16 +42,11 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
         <div className="container">
           <div className="main-header">
             <div className="header-logo">
-              <Link className="d-flex" href="/">
+              <Link className="d-flex align-itemd-start" href="/">
                 <img
-                  className="logo-night"
+                  className="logo-day"
                   alt="GenZ"
-                  src="/assets/imgs/page/logo/Soff Study white logo.png"
-                />
-                <img
-                  className="d-none logo-day"
-                  alt="GenZ"
-                  src="/assets/imgs/page/logo/Soff Study dark logo.png"
+                  src="/assets/imgs/page/logo/logo-1.png"
                 />
               </Link>
             </div>
