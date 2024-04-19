@@ -3,11 +3,29 @@ import Head from 'next/head';
 import Layout from "../components/layout/Layout";
 import TrendingTopic from "../components/slider/TrendingTopic";
 import { useTranslation } from "react-i18next";
-import data from "../util/interview";
+import { useEffect, useState } from "react";
+import client from "../repositories/repository";
 
 export default function Home() {
 
+    const [video, setVideo] = useState([])
+
     const { t } = useTranslation()
+
+
+    async function getVideos() {
+        try {
+            const resp = await client.get(`common/video-tutorials/`)
+            setVideo(resp.data);
+            console.log(resp.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getVideos()
+    }, [])
 
     return (
         <>
@@ -176,13 +194,12 @@ export default function Home() {
                                     <div className="col-12">
                                         <div className="box-list-posts">
                                             <div className="row">
-                                                {data.slice(0, 3).map((item, i) => (
+                                                {video.slice(0, 3).map((item, i) => (
                                                     <div className="col-lg-4" key={i}>
-                                                        <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
+                                                        <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up" style={{ overflow: 'hidden', paddingBottom: '10px' }}>
                                                             <div className="card-image mb-10">
-                                                                <Link className="post-type" href="#" />
-                                                                <Link href={`/videolar/1`}>
-                                                                    <img src={`assets/imgs/page/interviews/${item.img}`} alt="Genz" />
+                                                                <Link href={`/videolar/${item?.id}`}>
+                                                                    <img src={`${item.image}`} alt={item?.title} />
                                                                 </Link>
                                                             </div>
                                                             <div className="card-info">
@@ -190,8 +207,8 @@ export default function Home() {
                                                                     <h5 className="color-white mt-10">{item.title}</h5>
                                                                 </Link>
                                                                 <div className="row align-items-center mt-10">
-                                                                    <p>
-                                                                        Karate sport turi bo'yicha Respublika bo'yicha yagona ochiq bepul video qo'llanmalar portali istalgan vaqtda sport bilan mustaqil shug'ullaning
+                                                                    <p style={{ lineHeight: '20px' }}>
+                                                                        {item?.description}
                                                                     </p>
                                                                 </div>
                                                             </div>

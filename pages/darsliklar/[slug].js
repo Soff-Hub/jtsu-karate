@@ -1,13 +1,42 @@
 import Link from "next/link";
 import Head from 'next/head';
 import Layout from "../../components/layout/Layout";
+import { useEffect, useState } from "react";
+import client from "../../repositories/repository";
+import { useRouter } from "next/router";
 
 export default function Home() {
+
+    const [video, setVideo] = useState(null)
+
+    const { query } = useRouter()
+
+    async function getVideos() {
+        try {
+            const resp = await client.get(`common/text-books/${query?.slug}`)
+            setVideo(resp.data);
+            console.log(resp.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    function clickFile(file) {
+        window.location.href = file
+    }
+
+    useEffect(() => {
+        if (query?.slug) {
+            getVideos()
+        }
+    }, [query?.slug])
+
+
     return (
         <>
             <Head>
                 <title>
-                    Genz - Single post
+                    JTSU | {video?.title}
                 </title>
             </Head>
             <Layout>
@@ -18,33 +47,41 @@ export default function Home() {
                             <div className="col-xl-10 col-lg-12">
                                 <div className="row mt-20 align-items-end">
                                     <div className="col-lg-8 m-auto text-center">
-                                        <h2 className="color-linear">Digital Design That Will Help You Start Your Business</h2>
+                                        <h2 className="color-linear">{video?.title}</h2>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-8 m-auto">
                                         <div className="content-detail border-gray-800">
                                             <div className="mt-30 mb-20">
-                                                <img className="img-bdrd-16" src="/assets/imgs/page/single/img.jpg" alt="Genz" />
+                                                <img className="img-bdrd-12" src={video?.image} alt="Genz" />
                                             </div>
 
-                                            <p className="text-lg color-gray-500 mb-50">Tortor placerat bibendum consequat sapien, facilisi facilisi pellentesque morbi. Id conse ctetur ut vitae a massa a. Lacus ut bibendum sollicitudin fusce sociis mi. Dictum volutpat praesent ornare accumsan elit venenatis. Congue sodales nunc quis ultricies odio porta. Egestas mauris placerat leo phasellu s ut sit.</p>
+                                            <p className="text-lg color-gray-500 mb-50">
+                                                {video?.description}
+                                            </p>
 
-                                            <h3 className="color-white mb-30">Use your headings</h3>
-
-                                            <p className="text-lg color-gray-500">Thirty there &amp; time wear across days, make inside on these you. Can young a really, roses blog small of song their dreamy life pretty? Because really duo living to noteworthy bloom bell. Transform clean daydreaming cute twenty process rooms cool. White white dreamy dramatically place everything although. Place out apartment afternoon whimsical kinder, little romantic joy we flowers handmade. Thirty she a studio of she whimsical projects, afternoon effect going an floated maybe.</p>
-
-                                            <h4 className="color-white mt-40 mb-30">Smaller heading</h4>
-
-                                            <div className="row">
-                                                <div className="col-lg-12 mb-30">
-                                                    <p className="text-lg color-gray-500 mb-40">Thirty there &amp; time wear across days, make inside on these you. Can young a really, roses blog small of song their dreamy life pretty? Because really duo living to noteworthy bloom bell. Transform clean daydreaming cute twenty process rooms cool. White white dreamy dramatically place everything although.</p>
-                                                    <p className="text-lg color-gray-500">White white dreamy dramatically place everything although. Place out apartment afternoon whimsical kinder, little romantic joy we flowers handmade. Thirty she a studio of she whimsical projects, afternoon effect going an floated maybe.</p>
-                                                </div>
+                                            <div className="lesson-files d-flex" style={{ flexDirection: 'column', gap: '20px' }}>
+                                                {
+                                                    video?.contents ? (
+                                                        video.contents.map(item => (
+                                                            <div key={item.id} className="wow animate__animated animate__fadeIn d-flex align-items-center gap-4" style={{ border: '1px solid', borderRadius: '15px', padding: '10px', cursor: 'pointer' }} onClick={() => clickFile(item?.file)}>
+                                                                <div style={{ width: '45px', height: '45px' }}>
+                                                                    <img
+                                                                        src={'https://st.jtsu.uz//elfinder-files/icons/pdf.png'}
+                                                                        alt={video?.title}
+                                                                    />
+                                                                </div>
+                                                                <div className="info-post border-gray-800">
+                                                                    <h6 className="color-white">
+                                                                        {item.title}
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    ) : ''
+                                                }
                                             </div>
-
-                                            <p className="text-lg color-gray-500">Tortor placerat bibendum consequat sapien, facilisi facilisi pellentesque morbi. Id consectetur ut vitae a massa a. Lacus ut bibendum sollicitudin fusce sociis mi. Dictum volutpat praesent ornare accumsan elit venenatis. Congue sodales nunc quis ultricies odio porta. Egestas mauris placerat leo phasellus ut sit.</p>
-
                                         </div>
                                     </div>
                                 </div>

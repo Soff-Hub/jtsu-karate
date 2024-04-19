@@ -2,8 +2,29 @@ import Link from "next/link";
 import Head from 'next/head';
 import Layout from "../../components/layout/Layout";
 import data from "../../util/healthy";
+import { useEffect, useState } from "react";
+import client from "../../repositories/repository";
 
 export default function Home() {
+
+    const [videos, setVideos] = useState([])
+
+    async function getVideos() {
+        try {
+            const resp = await client.get('common/text-books/')
+            setVideos(resp.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    console.log(videos);
+
+    useEffect(() => {
+        getVideos()
+    }, [])
+
+
     return (
         <>
             <Head>
@@ -30,18 +51,20 @@ export default function Home() {
                                     <div className="row">
                                         <div className="col-lg-8 m-auto">
                                             <div className="box-list-posts mt-30">
-                                                {data.slice(0, 5).map((item, i) => (
+                                                {videos.map((item, i) => (
                                                     <div key={i} className="card-list-posts card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 wow animate__animated animate__fadeIn">
                                                         <div className="card-image hover-up">
                                                             <div>
-                                                                <img src="assets/imgs/page/healthy/author.png" alt="Genz" />
+                                                                <img src={item?.image} alt="Genz" />
                                                             </div>
                                                         </div>
                                                         <div className="card-info"><Link href={`/darsliklar/1`}>
                                                             <h3 className="mb-10 color-white">{item.title}</h3></Link>
-                                                            <p className="color-gray-500">Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far</p>
+                                                            <p className="color-gray-500">
+                                                                {item?.description}
+                                                            </p>
                                                             <div className="row mt-20">
-                                                                <div className="col-7">12.12.2024</div>
+                                                                <div className="col-7">{item.created_at}</div>
                                                             </div>
                                                         </div>
                                                     </div>

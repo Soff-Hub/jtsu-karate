@@ -884,6 +884,12 @@ h6 {
   width: 100%;
 }
 
+.img-bdrd-12 {
+  max-height: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
 .bdrd16 {
   border-radius: 16px !important;
 }
@@ -2061,7 +2067,7 @@ input {
   margin-bottom: 30px;
   border: 1px solid #222F43;
   background-color: #131C31;
-  height: 420px;
+  height: 370px;
   display: flex;
   flex-direction: column;
 }

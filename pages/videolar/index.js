@@ -2,12 +2,30 @@ import Link from "next/link";
 import Head from 'next/head';
 import Layout from "../../components/layout/Layout";
 import data from "../../util/interview";
+import { useEffect, useState } from "react";
+import client from "../../repositories/repository";
 
 export default function Home() {
+
+    const [videos, setVideos] = useState([])
+
+    async function getVideos() {
+        try {
+            const resp = await client.get('common/video-tutorials/')
+            setVideos(resp.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getVideos()
+    }, [])
+
     return (
         <>
             <Head>
-                <title>Genx - Blog archive 5</title>
+                <title>JTSU | Karate bo'yicha video qo'llanmalar</title>
             </Head>
             <Layout>
                 <div className="cover-home3">
@@ -30,13 +48,12 @@ export default function Home() {
                                 </div>
                                 <div className="mb-20">
                                     <div className="row mb-10" data-masonry="{&quot;percentPosition&quot;: true }">
-                                        {data.slice(0, 6).map((item, i) => (
+                                        {videos.map((item, i) => (
                                             <div className="col-lg-4" key={i}>
                                                 <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
                                                     <div className="card-image mb-10">
-                                                        <Link className="post-type" href="#" />
                                                         <Link href={`/videolar/1`}>
-                                                            <img src={`assets/imgs/page/interviews/${item.img}`} alt="Genz" />
+                                                            <img src={`${item.image}`} alt="Genz" />
                                                         </Link>
                                                     </div>
                                                     <div className="card-info">
@@ -44,8 +61,8 @@ export default function Home() {
                                                             <h5 className="color-white mt-10">{item.title}</h5>
                                                         </Link>
                                                         <div className="row align-items-center mt-10">
-                                                            <p>
-                                                                Karate sport turi bo'yicha Respublika bo'yicha yagona ochiq bepul video qo'llanmalar portali istalgan vaqtda sport bilan mustaqil shug'ullaning
+                                                            <p className="text-truncate">
+                                                                {item?.description}
                                                             </p>
                                                         </div>
                                                     </div>
