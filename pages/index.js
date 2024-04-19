@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import TrendingTopic from "../components/slider/TrendingTopic";
 
 export default function Home() {
+
     return (
         <>
             <Head>

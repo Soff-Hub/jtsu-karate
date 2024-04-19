@@ -4,20 +4,25 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { advantages } from "../../repositories/api";
+import { useTranslation } from "react-i18next";
+import i18n from "../../util/i18n";
 
 const Header = ({ handleOpen, handleRemove, openClass }) => {
   const [scroll, setScroll] = useState(0);
   const [isToggled, setToggled] = useState(false);
   const toggleTrueFalse = () => setToggled(!isToggled);
-  //   const [advantage, setAdvantage] = useState(null);
 
   const router = useRouter();
-  console.log(router.asPath);
+  const { t } = useTranslation()
 
-  function navbarApi() {
-    advantages()
-      .then((ress) => setAdvantage(ress.data))
-      .catch((err) => console.log(err));
+  const handleChangeLang = (lang) => {
+
+    i18n.changeLanguage(lang)
+    localStorage.setItem('lang', lang)
+
+    router.push({
+      pathname: router.pathname
+    })
   }
 
   useEffect(() => {
@@ -27,10 +32,6 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
         setScroll(scrollCheck);
       }
     });
-  }, []);
-
-  useEffect(() => {
-    navbarApi();
   }, []);
 
   return (
@@ -67,7 +68,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                         }`}
                       href="/"
                     >
-                      Asosiy Sahifa
+                      {t("Asosiy Sahifa")}
                     </Link>
                   </li>
                   <li>
@@ -78,7 +79,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                         }`}
                       href="/maqolalar"
                     >
-                      Maqolalar
+                      {t("Maqolalar")}
                     </Link>
                   </li>
                   <li>
@@ -89,7 +90,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                         }`}
                       href="/videolar"
                     >
-                      Video qo'llanmalar
+                      {t("Video qo'llanmalar")}
                     </Link>
                   </li>
                   <li>
@@ -100,7 +101,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                         }`}
                       href="/darsliklar"
                     >
-                      Darsliklar
+                      {t("Darsliklar")}
                     </Link>
                   </li>
                 </ul>
@@ -108,6 +109,11 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
 
             </div>
             <div className="header-right text-end">
+              <select value={i18n.language} onChange={(e) => handleChangeLang(e.target.value)}>
+                <option value={'uz'}>uz</option>
+                <option value={'ru'}>ru</option>
+                <option value={'en'}>en</option>
+              </select>
               <Link
                 className={`${router.asPath === "/page-contact"
                   ? "active"
