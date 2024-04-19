@@ -29,6 +29,7 @@
         position: absolute;
         top: 33%;
         left: 0%;
+
         img {
             animation: animationFramesOne 20s linear infinite alternate;
         }
@@ -39,6 +40,7 @@
         top: 18%;
         right: 15%;
         animation: hero-thumb-animation 2s linear infinite alternate;
+
         img {
             animation: rotateMe 10s linear infinite alternate;
         }

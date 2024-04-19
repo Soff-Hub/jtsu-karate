@@ -15,7 +15,6 @@ export default function Home() {
         try {
             const resp = await client.get(`common/text-books/${query?.slug}`)
             setVideo(resp.data);
-            console.log(resp.data);
         } catch (err) {
             console.log(err);
         }

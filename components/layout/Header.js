@@ -6,11 +6,17 @@ import { useRouter } from "next/router";
 import { advantages } from "../../repositories/api";
 import { useTranslation } from "react-i18next";
 import i18n from "../../util/i18n";
+import SearchResult from "../elements/SearchResult";
+import useDebounce from "../../util/useDebounce";
+import client from "../../repositories/repository";
 
 const Header = ({ handleOpen, handleRemove, openClass }) => {
   const [scroll, setScroll] = useState(0);
   const [isToggled, setToggled] = useState(false);
   const toggleTrueFalse = () => setToggled(!isToggled);
+  const [search, setSearch] = useState(null)
+  const [searchResult, setSearchResult] = useState(null)
+  const searchVal = useDebounce(search, 500)
 
   const router = useRouter();
   const { t } = useTranslation()
@@ -19,6 +25,22 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
 
     i18n.changeLanguage(lang)
     localStorage.setItem('lang', lang)
+  }
+
+  const globalSearch = async (key) => {
+    const resp = await client.get(`common/global-search/?search=${key}`)
+    setSearchResult(resp.data);
+
+    if (router.pathname.split('/').includes('search')) {
+      setSearchResult(null)
+      router.push(`/search/${key}`)
+    }
+
+    if (resp.data?.length === 0) {
+      setTimeout(() => {
+        setSearchResult(null)
+      }, 2000);
+    }
   }
 
   useEffect(() => {
@@ -30,6 +52,15 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
     });
   }, []);
 
+  useEffect(() => {
+    // globalSearch('')
+    if (!searchVal || searchVal === "") {
+      setSearch(null)
+    } else {
+      globalSearch(searchVal)
+    }
+  }, [searchVal]);
+
   return (
     <>
       <header
@@ -40,7 +71,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
         }
       >
         <div className="container">
-          <div className="main-header">
+          <div className="main-header" style={{ position: 'relative' }}>
             <div className="header-logo">
               <Link className="d-flex align-itemd-start" href="/">
                 <img
@@ -50,7 +81,10 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                 />
               </Link>
             </div>
-            <div className="header-nav">
+            <div className="header-nav d-flex align-items-center">
+              <label className="global-search-label">
+                <input className="global-search-input" onChange={(e) => setSearch(e.target.value)} placeholder="Qidirish..." />
+              </label>
               <nav className="nav-main-menu d-none d-xl-block">
                 <ul className="main-menu">
                   <li>
@@ -97,6 +131,8 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                   </li>
                 </ul>
               </nav>
+
+              {searchResult && !router.pathname.split('/').includes('search') && <SearchResult searchVal={searchVal} searchResult={searchResult} />}
 
             </div>
             <div className="header-right text-end d-flex align-items-center">

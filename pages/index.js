@@ -32,8 +32,6 @@ export default function Home() {
         }
     }
 
-    console.log(news);
-
     useEffect(() => {
         getVideos()
         getNews()
