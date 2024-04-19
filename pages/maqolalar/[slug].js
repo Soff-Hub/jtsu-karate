@@ -18,33 +18,16 @@ export default function Home() {
                             <div className="col-xl-10 col-lg-12">
                                 <div className="row mt-50 align-items-end">
                                     <div className="col-lg-8 m-auto text-center">
-                                        <h2 className="color-linear">Digital Design That Will Help You Start Your Business</h2>
+                                        <h3 className="color-linear">Digital Design That Will Help You Start Your Business</h3>
                                     </div>
                                 </div>
                                 <div className="row mt-30">
-                                    <div className="col-lg-12">
-                                        <div className="image-detail mb-30"><img className="bdrd16" src="/assets/imgs/page/single/img6.jpg" alt="Genz" /></div>
+                                    <div className="col-lg-10 mx-auto">
+                                        <div className="image-detail mb-30">
+                                            <img className="bdrd16" src="/assets/imgs/page/single/img6.jpg" alt="Genz" />
+                                        </div>
                                     </div>
                                     <div className="col-lg-8 m-auto">
-                                        <div className="row mb-40">
-                                            <div className="col-md-6 mb-10">
-                                                <div className="box-author"><img src="/assets/imgs/page/about/author2.png" alt="Genz" />
-                                                    <div className="author-info">
-                                                        <h6 className="color-gray-700">William Randolph</h6><span className="color-gray-700 text-sm mr-30">25 April 2022</span><span className="color-gray-700 text-sm">3 mins to read</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 text-start text-md-end">
-                                                <div className="d-inline-block pt-10">
-                                                    <div className="d-flex align-item-center">
-                                                        <h6 className="d-inline-block color-gray-500 mr-10">Share</h6>
-                                                        <Link className="icon-media icon-fb" href="#" />
-                                                        <Link className="icon-media icon-tw" href="#" />
-                                                        <Link className="icon-media icon-printest" href="#"></Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div className="content-detail border-gray-800">
                                             <p className="text-xl color-gray-500">The fancy moon going in little artist painting. Thirty days of lavender in the dreamy light inside. Other perfect oh plants, for and again. I’ve honey feeling. Caring dreamland projects noteworthy than minimal, their it oh pretty feeling may. Include pink be.</p>
                                             {/* <div className="mt-30 mb-20"><img className="img-bdrd-16" src="/assets/imgs/page/single/img.jpg" alt="Genz" /></div> */}

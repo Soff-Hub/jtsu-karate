@@ -2212,6 +2212,13 @@ input {
   margin-bottom: 20px;
   margin-top: 15px;
 }
+
+.list-posts .item-post .info-post div {
+  padding-left: 25px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
 .list-posts .item-post .info-post ul li {
   list-style: disc;
 }
