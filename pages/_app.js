@@ -4,11 +4,9 @@ import '../public/assets/css/style.css';
 import { useEffect, useState } from "react";
 import '../util/i18n'
 import i18n from "../util/i18n";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
     const [isClient, setIsClient] = useState(false)
-    const { push, pathname } = useRouter()
 
     useEffect(() => {
         setIsClient(true)
@@ -25,9 +23,6 @@ function MyApp({ Component, pageProps }) {
             const lang = localStorage.getItem('lang')
             if (lang) {
                 i18n.changeLanguage(lang)
-                push({
-                    pathname
-                })
             } else {
                 localStorage.setItem('lang', 'uz')
             }

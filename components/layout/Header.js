@@ -19,10 +19,6 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
 
     i18n.changeLanguage(lang)
     localStorage.setItem('lang', lang)
-
-    router.push({
-      pathname: router.pathname
-    })
   }
 
   useEffect(() => {
@@ -73,7 +69,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                   </li>
                   <li>
                     <Link
-                      className={`${router.asPath === "/maqolalar"
+                      className={`${router.pathname.split('/').includes('maqolalar')
                         ? "active"
                         : "color-gray-500"
                         }`}
@@ -84,7 +80,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                   </li>
                   <li>
                     <Link
-                      className={`${router.asPath === "/videolar"
+                      className={`${router.pathname.split('/').includes('videolar')
                         ? "active"
                         : "color-gray-500"
                         }`}
@@ -95,7 +91,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                   </li>
                   <li>
                     <Link
-                      className={`${router.asPath === "/darsliklar"
+                      className={`${router.pathname.split('/').includes('darsliklar')
                         ? "active"
                         : "color-gray-500"
                         }`}

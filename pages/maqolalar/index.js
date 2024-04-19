@@ -15,27 +15,18 @@ export default function Home() {
                         <div className="row">
                             <div className="col-xl-1" />
                             <div className="col-xl-10 col-lg-12">
-                                <div className="row align-items-end mt-50">
+                                <div className="row align-items-end mt-20">
                                     <div className="col-lg-12 text-center">
                                         <div className="d-inline-block position-relative">
                                             <h1 className="color-white mb-10 color-linear wow animate__animated animate__fadeIn">Healthy</h1>
                                         </div>
                                         <p className="color-gray-500 text-base mb-20 wow animate__animated animate__fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis nisi sed turpis<br className="d-none d-lg-block" />vulputate viverra. Morbi ligula elit, hendrerit non nisl tincidunt, sodales consequat magna.</p>
                                     </div>
-                                    <div className="col-lg-12 text-center">
-                                        <div className="box-breadcrumbs wow animate__animated animate__fadeIn">
-                                            <ul className="breadcrumb">
-                                                <li><Link className="home" href="/">Home</Link></li>
-                                                <li><Link href="/blog-archive">Blog</Link></li>
-                                                <li><span>Healthy</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     <div className="col-lg-12">
-                                        <div className="border-bottom border-gray-800 mt-30 mb-30" />
+                                        <div className="border-bottom border-gray-800" />
                                     </div>
                                 </div>
-                                <div className="box-list-posts mt-40">
+                                <div className="box-list-posts mt-20">
                                     <div className="row">
                                         <div className="col-lg-8 m-auto">
                                             <div className="box-list-posts mt-30">

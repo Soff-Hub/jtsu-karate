@@ -16,17 +16,6 @@ export default function Home() {
                         <div className="row">
                             <div className="col-xl-1" />
                             <div className="col-xl-10 col-lg-12">
-                                <div className="pt-30 border-bottom border-gray-800 pb-20">
-                                    <div className="box-breadcrumbs">
-                                        <ul className="breadcrumb">
-                                            <li>
-                                                <Link className="home" href="/index">Home</Link></li>
-                                            <li>
-                                                <Link href="/blog-archive">Blog</Link></li>
-                                            <li><span>Digital Design That Will Help You Start Your Business</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div className="row mt-50 align-items-end">
                                     <div className="col-lg-8 m-auto text-center">
                                         <h2 className="color-linear">Digital Design That Will Help You Start Your Business</h2>

@@ -22,15 +22,6 @@ export default function Home() {
                                         </div>
                                         <p className="color-gray-500 text-base wow animate__animated animate__fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis nisi sed turpis vulputate viverra. Morbi ligula elit, hendrerit non nisl tincidunt, sodales consequat magna.</p>
                                     </div>
-                                    <div className="col-lg-5 mb-20 text-start text-lg-end">
-                                        <div className="box-breadcrumbs wow animate__animated animate__fadeIn">
-                                            <ul className="breadcrumb">
-                                                <li><Link className="home" href="/">Home</Link></li>
-                                                <li><Link href="/blog-archive">Blog</Link></li>
-                                                <li><span>Interviews</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     <div className="col-lg-12">
                                         <div className="border-bottom border-gray-800 mt-10 mb-30" />
                                     </div>
