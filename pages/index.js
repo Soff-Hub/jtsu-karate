@@ -18,12 +18,13 @@ export default function Home() {
                 <div className="cover-home1">
                     <div className="container">
                         <div className="row">
-                            <div className="col-xl-1" />
-                            <div className="col-xl-10 col-lg-12">
-                                <div className="banner banner-home2">
+                            <div className="col-xl-10 col-lg-12 mx-auto">
+                                <div className="banner banner-home2" style={{ position: 'relative' }}>
+                                    <div className="hero-content"></div>
+                                    <div className="hero-content-overlay"></div>
                                     <div className="text-center">
                                         <h6 className="color-gray-600">Welcome to our blog</h6>
-                                        <h1 className="color-white">Being<span className="color-linear"> Unique</span>
+                                        <h1 style={{ color: 'white' }}>Being<span className="color-linear"> Unique</span>
                                             is better<br className="d-none d-lg-block" />than being
                                             <span className="color-linear">Erfect</span>
                                         </h1>
@@ -31,8 +32,8 @@ export default function Home() {
                                 </div>
 
                                 <div className="text-center mt-70">
-                                    <h3 className="color-linear mb-10">Sportchilarimiz</h3>
-                                    <p className="text-lg color-gray-500">Jahon arenalarida faxrli yutuqlarni egallab, Yurtimiz bayrog'ini ko'tarayotkan sportchilarimiz</p>
+                                    <h3 className="mb-10" style={{ color: 'white' }}>Sportchilarimiz</h3>
+                                    <p style={{ color: 'white' }}>Jahon arenalarida faxrli yutuqlarni egallab, Yurtimiz bayrog'ini ko'tarayotkan sportchilarimiz</p>
                                 </div>
                                 <div className="mb-70 mt-30">
                                     <div className="box-topics box-topics-2 border-gray-800 bg-gray-850">

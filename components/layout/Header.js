@@ -64,17 +64,6 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                   </li>
                   <li>
                     <Link
-                      className={`${router.pathname.split('/').includes('maqolalar')
-                        ? "active"
-                        : "color-gray-500"
-                        }`}
-                      href="/maqolalar"
-                    >
-                      {t("Maqolalar")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       className={`${router.pathname.split('/').includes('videolar')
                         ? "active"
                         : "color-gray-500"
@@ -93,6 +82,17 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                       href="/darsliklar"
                     >
                       {t("Darsliklar")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className={`${router.pathname.split('/').includes('maqolalar')
+                        ? "active"
+                        : "color-gray-500"
+                        }`}
+                      href="/maqolalar"
+                    >
+                      {t("Hujjatlar")}
                     </Link>
                   </li>
                 </ul>

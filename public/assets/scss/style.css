@@ -1894,11 +1894,13 @@ input {
   border-radius: 8px;
   overflow: hidden;
   position: relative;
+  object-fit: cover;
 }
 
 .card-style-1 .card-image img {
   width: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .card-style-1 .card-image .link-post:hover h4 {

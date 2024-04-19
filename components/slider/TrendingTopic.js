@@ -8,29 +8,29 @@ const TrendingTopic = () => {
 
     const data = [
         {
-            title: "Sport",
+            title: "Alisher Raxmatov",
             article: 38,
-            img: "sport.png",
+            img: "1.png",
         },
         {
-            title: "Travel",
+            title: "Alisher Raxmatov",
             article: 63,
-            img: "travel.png",
+            img: "2.png",
         },
         {
-            title: "Design",
+            title: "Alisher Raxmatov",
             article: 78,
-            img: "design.png",
+            img: "3.png",
         },
         {
-            title: "Movie",
+            title: "Alisher Raxmatov",
             article: 125,
-            img: "movie.png",
+            img: "4.png",
         },
         {
-            title: "Lifestyle",
+            title: "Alisher Raxmatov",
             article: 45,
-            img: "lifestyle.png",
+            img: "5.png",
         },
     ];
 
@@ -43,7 +43,7 @@ const TrendingTopic = () => {
                     spaceBetween={30}
                     loop={true}
                     autoplay={{
-                        delay: 1500,
+                        delay: 2000,
                         disableOnInteraction: false
                     }}
                     navigation={{
@@ -82,11 +82,12 @@ const TrendingTopic = () => {
                         <SwiperSlide className="swiper-slide" key={i}>
                             <div className="card-style-1">
                                 <Link href="/blog-archive">
-                                    <div className="card-image"><img src={`assets/imgs/page/homepage1/${item.img}`} alt="Genz" />
+                                    <div className="card-image">
+                                        <img src={`assets/imgs/page/sportchilar/${item.img}`} alt="Genz" />
                                         <div className="card-info">
                                             <div className="info-bottom">
                                                 <h6 className="color-white mb-5">{item.title}</h6>
-                                                <p className="text-xs color-gray-500"> {item.article} Articles</p>
+                                                {/* <p className="text-xs color-gray-500"> {item.article} </p> */}
                                             </div>
                                         </div>
                                     </div>

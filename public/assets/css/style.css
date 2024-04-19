@@ -2004,11 +2004,13 @@ input {
   border-radius: 8px;
   overflow: hidden;
   position: relative;
+  object-fit: cover;
 }
 
 .card-style-1 .card-image img {
   width: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .card-style-1 .card-image .link-post:hover h4 {
@@ -6019,6 +6021,38 @@ input {
   padding-top: 80px;
 }
 
+.hero-content {
+  position: absolute;
+  display: block;
+  min-height: 500px;
+  min-width: 1600px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -1;
+  background-image: url('../imgs/page/homepage/hero-bg.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.hero-content-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: block;
+  min-height: 500px;
+  min-width: 1600px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -1;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.banner-home2 {
+  padding-top: 80px;
+}
+
 .banner-1 {
   position: absolute;
   top: 0px;
@@ -8186,6 +8220,6 @@ body {
 }
 
 .dropdown-menu {
-  min-width: unset; 
+  min-width: unset;
   max-width: 200px;
 }
