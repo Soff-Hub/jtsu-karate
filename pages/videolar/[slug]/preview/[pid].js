@@ -13,7 +13,7 @@ export default function Home() {
 
   async function getVideos() {
     try {
-      const resp = await client.get(`common/video-tutorial-content/${query?.pid}`)
+      const resp = await client.get(`common/video-tutorial-content/${query?.pid}/${localStorage.getItem('user_id')}/`)
       setVideo(resp.data);
     } catch (err) {
       console.log(err);

@@ -26,6 +26,7 @@
     "sass": "^1.56.1",
     "swiper": "^8.4.5",
     "typewriter-effect": "^2.19.0",
+    "uuid": "^9.0.1",
     "wowjs": "^1.1.3"
   }
 }
