@@ -43,7 +43,7 @@ const TrendingTopic = () => {
                     spaceBetween={30}
                     loop={true}
                     autoplay={{
-                        delay: 2500,
+                        delay: 1500,
                         disableOnInteraction: false
                     }}
                     navigation={{
@@ -79,7 +79,7 @@ const TrendingTopic = () => {
                     className="swiper-wrapper"
                 >
                     {data.map((item, i) => (
-                        <SwiperSlide className="swiper-slide"  key={i}>
+                        <SwiperSlide className="swiper-slide" key={i}>
                             <div className="card-style-1">
                                 <Link href="/blog-archive">
                                     <div className="card-image"><img src={`assets/imgs/page/homepage1/${item.img}`} alt="Genz" />
