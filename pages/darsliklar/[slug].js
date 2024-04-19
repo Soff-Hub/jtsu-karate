@@ -20,9 +20,22 @@ export default function Home() {
         }
     }
 
-    function clickFile(file) {
-        window.location.href = file
+    const handleDownload = async (file, id) => {
+
+        await client.get(`common/download-count/${id}/textbook/`)
+        await getVideos()
+
+        var link = document.createElement('a');
+        link.href = file;
+
+        link.setAttribute('download', file);
+
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
     }
+
 
     useEffect(() => {
         if (query?.slug) {
@@ -64,17 +77,21 @@ export default function Home() {
                                                 {
                                                     video?.contents ? (
                                                         video.contents.map(item => (
-                                                            <div key={item.id} className="wow animate__animated animate__fadeIn d-flex align-items-center gap-4" style={{ border: '1px solid', borderRadius: '15px', padding: '10px', cursor: 'pointer' }} onClick={() => clickFile(item?.file)}>
-                                                                <div style={{ width: '45px', height: '45px' }}>
+                                                            <div key={item.id} className="wow animate__animated animate__fadeIn d-flex align-items-center gap-4" style={{ border: '1px solid', borderRadius: '15px', padding: '5px 10px', cursor: 'pointer' }} onClick={() => handleDownload(item.file, item.id)}>
+                                                                <div style={{ width: '55px', height: '55px' }}>
                                                                     <img
-                                                                        src={'https://st.jtsu.uz//elfinder-files/icons/pdf.png'}
+                                                                        src={'/assets/imgs/page/homepage/document-icon.svg'}
                                                                         alt={video?.title}
                                                                     />
                                                                 </div>
-                                                                <div className="info-post border-gray-800">
+                                                                <div className="info-post border-gray-800 d-flex justify-content-between w-100">
                                                                     <h6 className="color-white">
                                                                         {item.title}
                                                                     </h6>
+                                                                    <p className="text-truncate d-flex align-items-center justify-content-end gap-1 m-0" style={{ fontSize: '18px' }}>
+                                                                        <img src="/assets/imgs/page/homepage/download-icon.svg" />
+                                                                        <span>{item.download_count}</span>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         ))

@@ -43,13 +43,13 @@ export default function Home() {
                                             <div key={i} className='search-result-item'>
                                                 <Link
                                                     className={`color-gray-500 d-flex justify-centen-start pb-2 gap-3`}
-                                                    href={item.sign === 'text_book' ? `/darsliklar/${item.id}` : item.sign === 'text_book_content' ? `/darsliklar/${item.id}` : item.sign === "video_tutorial" ? `/videolar/${item.id}` : item.sign === "video_tutorial_content" ? `/videolar/1/preview/${item.id}` : item.sign === "document" ? `/maqolalar/` : 'https://st.jtsu.uz//elfinder-files/icons/pdf.png'}
+                                                    href={item.sign === 'text_book' ? `/darsliklar/${item.id}` : item.sign === 'text_book_content' ? `/darsliklar/${item.id}` : item.sign === "video_tutorial" ? `/videolar/${item.id}` : item.sign === "video_tutorial_content" ? `/videolar/1/preview/${item.id}` : item.sign === "document" ? `/maqolalar/` : '/assets/imgs/page/homepage/document-icon.svg'}
                                                 >
                                                     <>
                                                         <div style={{ maxWidth: '60px', display: 'flex', width: '100%', justifyContent: 'center' }}>
                                                             <img
                                                                 style={{ width: '100%' }}
-                                                                src={item.sign === 'text_book' || item.sign === 'video_tutorial' || item.sign === 'content' ? item.poster : item.sign === 'text_book_content' ? 'https://st.jtsu.uz//elfinder-files/icons/pdf.png' : item.sign === "video_tutorial_content" ? '/assets/imgs/page/homepage/video-icon.png' : 'https://st.jtsu.uz//elfinder-files/icons/pdf.png'}
+                                                                src={item.sign === 'text_book' || item.sign === 'video_tutorial' || item.sign === 'content' ? item.poster : item.sign === 'text_book_content' ? '/assets/imgs/page/homepage/document-icon.svg' : item.sign === "video_tutorial_content" ? '/assets/imgs/page/homepage/video-icon.png' : '/assets/imgs/page/homepage/document-icon.svg'}
                                                             />
                                                         </div>
 
