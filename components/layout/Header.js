@@ -99,12 +99,22 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
               </nav>
 
             </div>
-            <div className="header-right text-end">
-              <select value={i18n.language} onChange={(e) => handleChangeLang(e.target.value)}>
+            <div className="header-right text-end d-flex align-items-center">
+              <div className="dropdown">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <p className="d-inline" style={{ fontWeight: '500' }}> {i18n.language.toUpperCase()}</p>
+                </button>
+                <ul className="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenu2">
+                  <li><button onClick={() => handleChangeLang('uz')} className="dropdown-item" type="button">Uz</button></li>
+                  <li><button onClick={() => handleChangeLang('ru')} className="dropdown-item" type="button">Ru</button></li>
+                  <li><button onClick={() => handleChangeLang('en')} className="dropdown-item" type="button">En</button></li>
+                </ul>
+              </div>
+              {/* <select className="form-select form-select-sm d-inline-block" value={i18n.language} onChange={(e) => handleChangeLang(e.target.value)}>
                 <option value={'uz'}>uz</option>
                 <option value={'ru'}>ru</option>
                 <option value={'en'}>en</option>
-              </select>
+              </select> */}
               <Link
                 className={`${router.asPath === "/page-contact"
                   ? "active"

@@ -108,8 +108,7 @@
 
 @include media-breakpoint-down(xl) {
     .header .main-header .header-right {
-        max-width: 285px;
-        padding-right: 35px;
+        max-width: 125px;
     }
     //max-width: 1199.98px
     .burger-icon {
@@ -875,9 +874,7 @@
     .cover-home1::before, .cover-home1::after {
         display: none;
     }
-    .header .main-header .header-right {
-        padding-right: 25px;
-    }
+
     .swiper-button-prev-style-1, .swiper-button-next-style-1 {
         display: block;
     }

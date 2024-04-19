@@ -2856,7 +2856,7 @@ input {
 }
 
 .header .main-header .header-right {
-  max-width: 225px;
+  max-width: 125px;
   width: 100%;
 }
 
@@ -6656,8 +6656,7 @@ iframe.google-map {
 
 @media (max-width: 1199.98px) {
   .header .main-header .header-right {
-    max-width: 285px;
-    padding-right: 35px;
+    max-width: 125px;
   }
 
   .burger-icon {
@@ -7405,10 +7404,6 @@ iframe.google-map {
   .cover-home1::before,
   .cover-home1::after {
     display: none;
-  }
-
-  .header .main-header .header-right {
-    padding-right: 25px;
   }
 
   .swiper-button-prev-style-1,
@@ -8188,4 +8183,9 @@ body {
 
 .soff__card .card-image img {
   width: 100%;
+}
+
+.dropdown-menu {
+  min-width: unset; 
+  max-width: 200px;
 }
