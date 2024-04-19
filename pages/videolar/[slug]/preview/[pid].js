@@ -54,7 +54,7 @@ export default function Home() {
                       <p className="text-lg color-gray-500 mb-50">
                         {video?.description}
                       </p>
-                      <h3 className="color-white mb-30">Use your headings</h3>
+                      {/* <h3 className="color-white mb-30">Use your headings</h3>
                       <p className="text-lg color-gray-500">
                         Thirty there &amp; time wear across days, make inside on
                         these you. Can young a really, roses blog small of song
@@ -75,7 +75,7 @@ export default function Home() {
                         Dictum volutpat praesent ornare accumsan elit venenatis.
                         Congue sodales nunc quis ultricies odio porta. Egestas
                         mauris placerat leo phasellus ut sit.
-                      </p>
+                      </p> */}
 
                     </div>
 
