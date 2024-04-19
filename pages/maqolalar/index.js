@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Genx - Blog archive 3</title>
+                <title>JTSU | Qonuniy hujjatlar bilan tanishing</title>
             </Head>
             <Layout>
                 <div className="cover-home3">
