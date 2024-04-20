@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = ({ openClass }) => {
+  const { t } = useTranslation();
   const [isActive, setIsActive] = useState({
     status: false,
     key: "",
@@ -52,7 +54,7 @@ const Sidebar = ({ openClass }) => {
                         className={router.asPath === "/" ? "active" : ""}
                         href="/"
                       >
-                        Asosiy Sahifa
+                        {t("Asosiy Sahifa")}
                       </Link>
                     </li>
                     <li>

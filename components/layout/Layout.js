@@ -3,6 +3,7 @@ import BackToTop from "../elements/BackToTop";
 import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import HeaderNav from "./HeaderNav";
 
 const Layout = ({ children }) => {
   const [openClass, setOpenClass] = useState("");
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
     <>
       {openClass && <div className="body-overlay-1" onClick={handleRemove} />}
 
+      <HeaderNav />
       <Header
         handleOpen={handleOpen}
         handleRemove={handleRemove}

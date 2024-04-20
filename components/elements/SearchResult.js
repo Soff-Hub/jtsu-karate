@@ -6,7 +6,7 @@ export default function SearchResult({ searchResult, searchVal }) {
     const { push } = useRouter()
 
     return (
-        <div className='search-result wow animate__animated animate__fadeIn'>
+        <div className='search-result wow animate__animated animate__fadeIn' style={{width:"100%", maxWidth:"100%"}}>
             <div className='search-result-list'>
                 {
                     searchResult && searchResult?.slice(0, 4).map((item, i) => (
