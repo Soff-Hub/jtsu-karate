@@ -4,17 +4,48 @@ import Layout from "../components/layout/Layout";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import client from "../repositories/repository";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const { t } = useTranslation();
   const [values, setValues] = useState(null);
+  const { langauge } = useSelector((state) => state?.textClass);
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const resp = await client.post("/common/connection/", values);
+      const resp = await client.post("/common/connection/", values, {
+        headers: {
+          "Accept-language": langauge, 
+        },
+      });
+      toast(t("Muvaffaqiyatli"), {
+        type: "success",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { marginTop: "30px" },
+      });
     } catch (err) {
-      console.log(err?.response?.data?.msg);
+      toast(err?.response?.data?.msg, {
+        type: "error",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { marginTop: "30px" },
+      });
     }
   }
 
@@ -37,7 +68,8 @@ export default function Home() {
                         style={{ fontSize: "18px" }}
                       >
                         <span className="d-flex align-items-center gap-2 text_sizes">
-                          <i className="fa-solid fa-phone-volume "></i>  <h6 className="text_sizes">+998707171776</h6>
+                          <i className="fa-solid fa-phone-volume "></i>{" "}
+                          <h6 className="text_sizes">+998707171776</h6>
                         </span>
                       </a>
                     </li>
@@ -48,7 +80,8 @@ export default function Home() {
                         target="_blank"
                       >
                         <span className="d-flex align-items-center gap-2 text_sizes">
-                          <i className="fa-solid fa-envelope "></i> <h6 className="text_sizes"> info@jtsu.uz</h6>
+                          <i className="fa-solid fa-envelope "></i>{" "}
+                          <h6 className="text_sizes"> info@jtsu.uz</h6>
                         </span>
                       </a>
                     </li>
@@ -59,7 +92,7 @@ export default function Home() {
                         target="_blank"
                       >
                         <span className="d-flex align-items-center gap-2 text_sizes">
-                        <i className="fa-solid fa-location-dot"></i>
+                          <i className="fa-solid fa-location-dot"></i>
                           <h6 className="text_sizes">
                             {t(
                               "Toshkent viloyati, Chirchiq shahri, Sportchilar ko'chasi, 19-uy"
@@ -170,6 +203,7 @@ export default function Home() {
           </div>
         </div>
       </Layout>
+      <ToastContainer />
     </>
   );
 }

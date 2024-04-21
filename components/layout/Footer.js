@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import client from "../../repositories/repository";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
-  const { textSize } = useSelector((state) => state?.textClass);
+  const { langauge, textSize } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
 
   const [values, setValues] = useState(null);
@@ -13,9 +15,36 @@ const Footer = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const resp = await client.post("/common/connection/", values);
+      const resp = await client.post("/common/connection/", values, {
+        headers: {
+          "Accept-language": langauge,
+        },
+      });
+      toast(t("Muvaffaqiyatli"), {
+        type: "success",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { marginTop: "30px" },
+      });
     } catch (err) {
-      console.log(err?.response?.data?.msg);
+      toast(err?.response?.data?.msg, {
+        type: "error",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { marginTop: "30px" },
+      });
     }
   }
 
@@ -47,7 +76,8 @@ const Footer = () => {
                 >
                   {t("Manzil")}
                 </h6>
-                <a  href="https://maps.app.goo.gl/eL577Z9vywX4CCJC6"
+                <a
+                  href="https://maps.app.goo.gl/eL577Z9vywX4CCJC6"
                   style={{ fontSize: textSize, lineHeight: "24px" }}
                   className="color-gray-500 "
                   target="_blank"
@@ -59,29 +89,44 @@ const Footer = () => {
                 <div className="mt-30 d-flex gap-4">
                   <span style={{ fontSize: "24px" }}>
                     {" "}
-                    <a  target="_blank"  href="https://www.facebook.com/uzdjtsu.uzdjtsu">
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/uzdjtsu.uzdjtsu"
+                    >
                       <i className="fa-brands fa-instagram text-danger "></i>
                     </a>
                   </span>
 
                   <span style={{ fontSize: "24px" }}>
                     {" "}
-                    <a href="https://t.me/uzdjtsu_rasmiy"  target="_blank" >
-                      <i style={{color:"#0088cc"}} className="fa-brands fa-telegram "></i>
+                    <a href="https://t.me/uzdjtsu_rasmiy" target="_blank">
+                      <i
+                        style={{ color: "#0088cc" }}
+                        className="fa-brands fa-telegram "
+                      ></i>
                     </a>
                   </span>
 
                   <span style={{ fontSize: "24px" }}>
                     {" "}
-                    <a href="https://twitter.com/uzdjtsu"  target="_blank" >
-                      <i style={{color:"#1DA1F2"}} className="fa-brands fa-twitter "></i>
+                    <a href="https://twitter.com/uzdjtsu" target="_blank">
+                      <i
+                        style={{ color: "#1DA1F2" }}
+                        className="fa-brands fa-twitter "
+                      ></i>
                     </a>
                   </span>
 
                   <span style={{ fontSize: "24px" }}>
                     {" "}
-                    <a href="https://www.facebook.com/uzdjtsu.uzdjtsu"  target="_blank" >
-                      <i style={{color:"#1877F2"}} className="fa-brands fa-facebook-f"></i>
+                    <a
+                      href="https://www.facebook.com/uzdjtsu.uzdjtsu"
+                      target="_blank"
+                    >
+                      <i
+                        style={{ color: "#1877F2" }}
+                        className="fa-brands fa-facebook-f"
+                      ></i>
                     </a>
                   </span>
                 </div>
@@ -152,6 +197,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <ToastContainer />
     </>
   );
 };

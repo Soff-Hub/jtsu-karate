@@ -25,6 +25,7 @@
     "react-dom": "18.2.0",
     "react-i18next": "^14.1.0",
     "react-redux": "^9.1.1",
+    "react-toastify": "^10.0.5",
     "sass": "^1.56.1",
     "swiper": "^8.4.5",
     "typewriter-effect": "^2.19.0",
