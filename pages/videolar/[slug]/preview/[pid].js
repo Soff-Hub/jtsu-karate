@@ -4,16 +4,28 @@ import Layout from "../../../../components/layout/Layout";
 import { useEffect, useState } from "react";
 import client from "../../../../repositories/repository";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const [video, setVideo] = useState(null);
+  const {langauge } = useSelector((state) => state?.textClass);
+  const {t}= useTranslation()
 
-  const [video, setVideo] = useState(null)
-
-  const { query } = useRouter()
+  const { query } = useRouter();
 
   async function getVideos() {
     try {
-      const resp = await client.get(`common/video-tutorial-content/${query?.pid}/${localStorage.getItem('user_id')}/`)
+      const resp = await client.get(
+        `common/video-tutorial-content/${query?.pid}/${localStorage.getItem(
+          "user_id"
+        )}/`,
+        {
+          headers: {
+            "Accept-language": langauge,
+          },
+        }
+      );
       setVideo(resp.data);
     } catch (err) {
       console.log(err);
@@ -21,11 +33,10 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (query?.pid && query?.pid !== 'undefined') {
-      getVideos()
+    if (query?.pid && query?.pid !== "undefined") {
+      getVideos();
     }
-  }, [query?.pid])
-
+  }, [query?.pid, langauge]);
 
   return (
     <>
@@ -40,16 +51,29 @@ export default function Home() {
               <div className="col-xl-10 col-lg-12">
                 <div className="row mt-50 align-items-end">
                   <div className="col-lg-9 col-md-8">
-                    <h3 className="color-linear">
-                      {video?.title}
-                    </h3>
+                    <h3 className="color-linear">{video?.title}</h3>
                   </div>
                 </div>
                 <div className="row mt-10">
                   <div className="col-lg-8">
                     <div className="content-detail border-gray-800">
                       <div className="mt-20 mb-20">
-                        {video && <iframe width={'100%'} height="400px" src={`${video?.video_url.replace('youtube.com/watch?v=', 'youtube.com/embed/').replace('youtu.be/', 'youtube.com/embed/')}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+                        {video && (
+                          <iframe
+                            width={"100%"}
+                            height="400px"
+                            src={`${video?.video_url
+                              .replace(
+                                "youtube.com/watch?v=",
+                                "youtube.com/embed/"
+                              )
+                              .replace("youtu.be/", "youtube.com/embed/")}`}
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          ></iframe>
+                        )}
                       </div>
                       <p className="text-lg color-gray-500 mb-50">
                         {video?.description}
@@ -76,28 +100,25 @@ export default function Home() {
                         Congue sodales nunc quis ultricies odio porta. Egestas
                         mauris placerat leo phasellus ut sit.
                       </p> */}
-
                     </div>
-
                   </div>
                   <div className="col-lg-4">
                     <div className="sidebar">
                       <div className="box-sidebar bg-gray-850 border-gray-800">
                         <div className="head-sidebar wow animate__animated animate__fadeIn">
-                          <h5 className="line-bottom">Ommabop videolar</h5>
+                          <h5 className="line-bottom">{t("Ommabop videolar")}</h5>
                         </div>
                         <div className="content-sidebar">
                           <div className="list-posts">
-                            {
-                              video?.similar ? (
-                                video.similar.map(item => (
-                                  <div key={item?.id} className="item-post wow animate__animated animate__fadeIn">
+                            {video?.similar
+                              ? video.similar.map((item) => (
+                                  <div
+                                    key={item?.id}
+                                    className="item-post wow animate__animated animate__fadeIn"
+                                  >
                                     <div className="image-post">
                                       <Link href={`/videolar/${item.id}`}>
-                                        <img
-                                          src={item.image}
-                                          alt="Genz"
-                                        />
+                                        <img src={item.image} alt="Genz" />
                                       </Link>
                                     </div>
                                     <div className="info-post border-gray-800">
@@ -105,15 +126,17 @@ export default function Home() {
                                         <h6 className="color-white">
                                           {item.title}
                                         </h6>
-                                        <p className="pb-20 text-truncate" style={{ maxWidth: '200px' }}>
+                                        <p
+                                          className="pb-20 text-truncate"
+                                          style={{ maxWidth: "200px" }}
+                                        >
                                           {item.description}
                                         </p>
                                       </Link>
                                     </div>
                                   </div>
                                 ))
-                              ) : ''
-                            }
+                              : ""}
                           </div>
                         </div>
                       </div>
@@ -124,7 +147,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Layout >
+      </Layout>
     </>
   );
 }

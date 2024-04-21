@@ -9,7 +9,6 @@ const client = Axios.create({
   headers: {
     accept: "application/json",
     Authorization: token,
-    'Accept-Language': 'uz'
   },
 });
 

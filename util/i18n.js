@@ -1,34 +1,31 @@
-import i18n from 'i18next'
-import Backend from 'i18next-http-backend'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
+// i18n.js
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 
-i18n
+// Translations
+import uz from "../public/locales/uz.json";
+import en from "../public/locales/en.json";
+import ru from "../public/locales/ru.json";
 
-    // Enables the i18next backend
-    .use(Backend)
+const options = {
+  resources: {
+    ru: {
+      translation: ru,
+    },
+    en: {
+      translation: en,
+    },
+    uz: {
+      translation: uz,
+    },
+  },
+  lng: "ru",
+  fallbackLng: "ru",
+  interpolation: {
+    escapeValue: false,
+  },
+};
 
-    // Enable automatic language detection
-    .use(LanguageDetector)
+i18n.use(initReactI18next).init(options);
 
-    // Enables the hook initialization module
-    .use(initReactI18next)
-    .init({
-        lng: 'uz',
-        backend: {
-            /* translation file path */
-            loadPath: '/locales/{{lng}}.json'
-        },
-        fallbackLng: 'uz',
-        debug: false,
-        keySeparator: false,
-        react: {
-            useSuspense: false
-        },
-        interpolation: {
-            escapeValue: false,
-            formatSeparator: ','
-        },
-    })
-
-export default i18n
+export default i18n;
