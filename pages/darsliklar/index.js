@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
-  const { textSize ,langauge } = useSelector((state) => state?.textClass);
+  const { textSize, langauge } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
 
   async function getVideos() {
@@ -50,9 +50,13 @@ export default function Home() {
                       style={{ fontSize: textSize, lineHeight: "26px" }}
                       className="color-gray-500 mb-3"
                     >
-                      {t("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis nisi sed turpis")}
-                      <br className="d-none d-lg-block" />
-                     {t(" vulputate viverra. Morbi ligula elit, hendrerit non nisl tincidunt, sodales consequat magna.")}
+                      {t(
+                        "Karate (yaponcha — hech narsasiz qoʻl bilan) — qurolsiz oʻzini-oʻzi himoya qilish, inson tanasining"
+                      )}{" "}
+                      <br />
+                      {t(
+                        "nozik joylariga qoʻl yoki oyoq bilan zarbalar berishga asoslangan sport kurashining bir turi."
+                      )}
                     </p>
                   </div>
                   <div className="col-lg-12">

@@ -18,9 +18,11 @@ const HeaderNav = () => {
   const [lang, setLang] = useState(langauge);
   const [searchResult, setSearchResult] = useState(null);
   const searchVal = useDebounce(search, 500);
+  const [open, setOPen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
   const { t } = useTranslation();
+  const [openCancel, setOpenCancel] = useState(true);
 
   const handleChangeLang = (lang) => {
     setLang(lang);
@@ -79,52 +81,126 @@ const HeaderNav = () => {
         }}
         className={scroll ? "header sticky-bar stick" : "header sticky-bar "}
       >
-        <div className="container" style={{ padding: "0" }}>
+        <div className="container">
           <div className="main-header" style={{ position: "relative" }}>
             <div
               className="header-nav d-flex align-items-center"
               style={{ width: "100%" }}
             >
-              <label className="global-search-label" style={{ width: "60%" }}>
-                <input
-                  style={{
-                    fontSize: textSize,
-                    width: "100%",
-                    height: "35px",
-                    borderRadius: "5px",
-                    padding: "0 15px",
-                  }}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder={`${t("Qidirish")}...`}
-                />
-                {searchResult &&
-                  !router.pathname.split("/").includes("search") && (
-                    <SearchResult
-                      searchVal={searchVal}
-                      searchResult={searchResult}
-                    />
-                  )}
-              </label>
+              <ul className="d-flex  gap-5 align-items-center">
+                <li>
+                  <a
+                    className="text-white"
+                    href="https://jtsu.uz/uz"
+                    target="_blank"
+                  >
+                    <strong>{t("Asosiy sayt")}</strong>
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+998707171776" target="_blank">
+                    <span className="text-white">
+                      <i className="fa-solid fa-phone-volume mx-1"></i>{" "}
+                      <strong>+998707171776</strong>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto: info@jtsu.uz" target="_blank">
+                    <span className="text-white">
+                      <i className="fa-solid fa-envelope mx-1"></i>{" "}
+                      <strong> info@jtsu.uz</strong>
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div className="d-flex gap-3">
-              <select
-                style={{
-                  backgroundColor: "black",
-                  border: "none",
-                  color: "#fff",
-                }}
-                className="mx-2"
-                onChange={(e) => handleChange(e.target.value)}
-              >
-                <option selected disabled>
-                  Maxsus imkoniyatlar
-                </option>
-                <option value={"12px"}>A0</option>
-                <option value={"14px"}>A1</option>
-                <option value={"16px"}>A2</option>
-                <option value={"18px"}>A3</option>
-                <option value={"20px"}>A4</option>
-              </select>
+
+            <div className="d-flex gap-3  align-items-center mx-4">
+              <div className="dropdown">
+                <button
+                  className="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenu2"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ color: "#fff", padding: "10px 0" }}
+                >
+                  <p
+                    className="d-inline"
+                    style={{ fontWeight: "500", fontSize: textSize }}
+                  >
+                    <i className="fa-solid fa-glasses mx-1"></i>{" "}
+                    {textSize === "12px"
+                      ? "A" + " " + 12 + " " + "PX"
+                      : textSize === "14px"
+                      ? "A" + " " + 14 + " " + "PX"
+                      : textSize === "16px"
+                      ? "A" + " " + 16 + " " + "PX"
+                      : textSize === "18px"
+                      ? "A" + " " + 18 + " " + "PX"
+                      : textSize === "20px"
+                      ? "A" + " " + 20 + " " + "PX"
+                      : t("Maxsus imkoniyatlar")}
+                  </p>
+                </button>
+                <ul
+                  className="dropdown-menu dropdown-menu-sm "
+                  aria-labelledby="dropdownMenu2"
+                >
+                  <li>
+                    <button
+                      onClick={() => handleChange("12px")}
+                      className="dropdown-item"
+                      type="button"
+                      style={{ fontSize: "12px", padding: "5px 10px" }}
+                    >
+                      A 12PX
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleChange("14px")}
+                      className="dropdown-item"
+                      type="button"
+                      style={{ fontSize: "14px", padding: "6px 10px" }}
+                    >
+                      A 14PX
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleChange("16px")}
+                      className="dropdown-item"
+                      type="button"
+                      style={{ fontSize: "16px", padding: "7px 10px" }}
+                    >
+                      A 16PX
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleChange("18px")}
+                      className="dropdown-item"
+                      type="button"
+                      style={{ fontSize: "18px", padding: "8px 10px" }}
+                    >
+                      A 18PX
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleChange("20px")}
+                      className="dropdown-item"
+                      type="button"
+                      style={{ fontSize: "20px", padding: "9px 10px" }}
+                    >
+                      A 20PX
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
@@ -143,7 +219,7 @@ const HeaderNav = () => {
                   </p>
                 </button>
                 <ul
-                  className="dropdown-menu dropdown-menu-sm"
+                  className="dropdown-menu dropdown-menu-sm dropdown-menu_width "
                   aria-labelledby="dropdownMenu2"
                 >
                   <li>
@@ -178,10 +254,63 @@ const HeaderNav = () => {
                   </li>
                 </ul>
               </div>
+              <div>
+                <strong
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setOPen(true)}
+                >
+                  <i className="fa-solid fa-search text-white"></i>
+                </strong>
+              </div>
+              <div>
+                <strong
+                  className="d-flex align-items-center gap-1 text-white"
+                  style={{ cursor: "not-allowed" }}
+                >
+                  {t("Kirish")}{" "}
+                  <i className="fa-solid fa-arrow-right-to-bracket "></i>
+                </strong>
+              </div>
             </div>
           </div>
         </div>
       </header>
+
+      <div className={open ? "background_color_Input" : "d-none"}>
+        <p onClick={() => setOPen(false)}>
+          <i className="fa-solid fa-xmark text-white fa-2x class_xmark"></i>
+        </p>
+
+        <div
+          onClick={() => setOPen(true)}
+          className="container d-flex justify-content-center"
+        >
+          <label className="label_input ">
+            <input
+              onInput={(e) => {
+                const value = e.target.value.trim();
+                setSearch(value);
+              }}
+              onChange={() => setOpenCancel(true)}
+              onFocus={() => setOpenCancel(true)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setOpenCancel(false);
+                }, 1000);
+              }}
+              className="global-search-input"
+              placeholder={`${t("Qidirish")}...`}
+            />
+            <span className="icon_search cursor-pointer">
+              <i className="fa-solid fa-search"></i>
+            </span>
+
+            {openCancel && search && (
+              <SearchResult searchVal={searchVal} searchResult={searchResult} />
+            )}
+          </label>
+        </div>
+      </div>
     </>
   );
 };

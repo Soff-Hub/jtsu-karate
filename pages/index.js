@@ -29,7 +29,7 @@ export default function Home() {
 
   async function getNews() {
     try {
-      const resp = await client.get(`common/contents/?type=news`, {
+      const resp = await client.get(`common/text-books/`, {
         headers: {
           "Accept-language": langauge,
         },
@@ -74,9 +74,6 @@ export default function Home() {
                       )}
                       <span className="color-linear"> {t("Karate")} </span>{" "}
                       {t("portali")}
-                      {/* Being<span className="color-linear"> Unique</span>
-                                            is better<br className="d-none d-lg-block" />than being
-                                            <span className="color-linear">Erfect</span> */}
                     </h2>
                   </div>
                 </div>
@@ -106,13 +103,13 @@ export default function Home() {
                 <div className="row mt-60">
                   <div className="col-lg-12 mb-20 text-center">
                     <h3 className="color-linear d-inline-block mb-10">
-                      {t("Eng so'ngi yangiliklar")}
+                      {t("Darsliklar")}
                     </h3>
                     <p
                       className="text-lg color-gray-500"
                       style={{ fontSize: textSize }}
                     >
-                      {t("Karate sohasidagi eng so'ngi yangiliklar bilan tanishing")}
+                      {t("Karate sohasidagi darsliklar bilan tanishing")}
                     </p>
                   </div>
                   {news.map((event) => (
@@ -123,7 +120,7 @@ export default function Home() {
                     >
                       <div className="card-blog-1 hover-up">
                         <div className="card-image">
-                          <Link href="/">
+                          <Link href={`/darsliklar/${event?.id}`}>
                             <img
                               src={event?.image}
                               alt="Genz"
@@ -132,13 +129,13 @@ export default function Home() {
                           </Link>
                         </div>
                         <div className="card-info">
-                          <Link href="/">
-                            <h4
+                          <Link href={`/darsliklar/${event?.id}`}>
+                            <h5
                               className="color-white"
                               style={{ fontSize: textSize, lineHeight: "24px" }}
                             >
                               {event?.title}
-                            </h4>
+                            </h5>
                           </Link>
 
                           <div className="row align-items-center mt-5">
@@ -160,9 +157,9 @@ export default function Home() {
                   <Link
                     style={{ fontSize: textSize }}
                     className="btn btn-linear btn-load-more wow animate__animated animate__zoomIn"
-                    href="#"
+                    href="/darsliklar"
                   >
-                    {t("Barcha yangililarni ko'rish")}
+                    {t("Barcha darsliklarni ko'rish")}
                     <i className="fi-rr-arrow-small-right" />
                   </Link>
                 </div>
@@ -176,7 +173,9 @@ export default function Home() {
                       className="text-lg color-gray-500"
                       style={{ fontSize: textSize }}
                     >
-                      {t("Eng so'ngi video qo'llanmalar yordamida Karate sportini mustaqil o'rganing")}
+                      {t(
+                        "Eng so'ngi video qo'llanmalar yordamida Karate sportini mustaqil o'rganing"
+                      )}
                     </p>
                   </div>
                   <div className="col-12">
