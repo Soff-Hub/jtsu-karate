@@ -26,7 +26,7 @@ const Header = () => {
         style={{
           margin: "0",
           ...(scroll
-            ? { position: "fixed", top: "50px",zIndex:"999999999" }
+            ? { position: "fixed", top: "50px",zIndex:"99999" }
             : {}),
         }}
         className="header sticky-bar bg-gray-900 "
