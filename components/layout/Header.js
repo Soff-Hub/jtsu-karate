@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = ({ handleOpen, handleRemove, openClass }) => {
   const [scroll, setScroll] = useState(0);
   const { textSize } = useSelector((state) => state?.textClass);
   const router = useRouter();
@@ -26,13 +26,13 @@ const Header = () => {
         style={{
           margin: "0",
           ...(scroll
-            ? { position: "fixed", top: "50px",zIndex:"99999" }
+            ? { position: "fixed", top: "50px", zIndex: "99999" }
             : {}),
         }}
         className="header sticky-bar bg-gray-900 "
       >
         <div className="container">
-          <div className="main-header">
+          <div className="main-header d-flex justify-content-between">
             <div className="header-logo">
               <Link className="d-flex align-itemd-start" href="/">
                 <img
@@ -112,6 +112,18 @@ const Header = () => {
                 </li>
               </ul>
             </nav>
+            <div
+              className={`burger-icon burger-icon-white ${
+                openClass && "burger-close"
+              }`}
+              onClick={() => {
+                openClass ? handleRemove() : handleOpen();
+              }}
+            >
+              <span className="burger-icon-top" />
+              <span className="burger-icon-mid" />
+              <span className="burger-icon-bottom" />
+            </div>
           </div>
         </div>
       </header>

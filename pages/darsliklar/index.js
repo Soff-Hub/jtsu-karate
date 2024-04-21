@@ -34,22 +34,17 @@ export default function Home() {
         <title>Genx - Blog archive 3</title>
       </Head>
       <Layout>
-        <div className="cover-home3">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-1" />
-              <div className="col-xl-10 col-lg-12">
-                <div className="row align-items-end mt-20">
-                  <div className="col-lg-12 text-center">
-                    <div className="d-inline-block position-relative">
-                      <h2 className="color-white mb-10 color-linear wow animate__animated animate__fadeIn">
-                        {t("Kitob va darsliklar")}
-                      </h2>
-                    </div>
-                    <p
-                      style={{ fontSize: textSize, lineHeight: "26px" }}
-                      className="color-gray-500 mb-3"
-                    >
+
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-11 m-auto col-lg-12">
+              <div className="row mt-30">
+                <div className="col-lg-12">
+                  <>
+                    <h2 className="color-linear d-inline-block mb-10">
+                      {t("Kitob va darsliklar")}
+                    </h2>
+                    <p className="text-lg color-gray-500">
                       {t(
                         "Karate (yaponcha — hech narsasiz qoʻl bilan) — qurolsiz oʻzini-oʻzi himoya qilish, inson tanasining"
                       )}{" "}
@@ -58,57 +53,75 @@ export default function Home() {
                         "nozik joylariga qoʻl yoki oyoq bilan zarbalar berishga asoslangan sport kurashining bir turi."
                       )}
                     </p>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="border-bottom border-gray-800" />
-                  </div>
-                </div>
-                <div className="box-list-posts mt-10">
-                  <div className="row">
-                    <div className="col-lg-8 m-auto">
-                      <div className="box-list-posts mt-30">
-                        {videos.map((item, i) => (
-                          <div
-                            key={i}
-                            className="card-list-posts card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 wow animate__animated animate__fadeIn"
-                          >
-                            <div className="card-image hover-up">
-                              <div>
-                                <img src={item?.image} alt="Genz" />
+                    <div id="postList" className="box-list-posts mt-30">
+                      {videos &&
+                        videos.map((item) => {
+                          return (
+                            <div
+                              key={item.id}
+                              className="card-list-posts wow animate__animated animate__fadeIn mb-30"
+                            >
+                              <div className="card-image hover-up">
+                                <Link
+                                  href={`/darsliklar/${item.id}`}
+                                  className="h-100"
+                                >
+                                  <img
+                                    className="h-100"
+                                    src={item.image}
+                                    alt="mentor"
+                                  />
+                                </Link>
                               </div>
-                            </div>
-                            <div className="card-info">
-                              <Link href={`/darsliklar/1`}>
-                                <h3 className="mb-10 color-white">
-                                  {item.title}
-                                </h3>
-                              </Link>
-                              <p
-                                className="color-gray-500"
+                              <div
+                                className="card-info"
                                 style={{
-                                  fontSize: textSize,
-                                  lineHeight: "26px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  justifyContent: "space-between",
+                                  padding: "10px 0",
                                 }}
                               >
-                                {item?.description}
-                              </p>
-                              <div className="row mt-20">
-                                <div
-                                  className="col-7"
-                                  style={{
-                                    fontSize: textSize,
-                                    lineHeight: "26px",
-                                  }}
-                                >
-                                  {item.created_at}
+                                <div>
+                                  <Link
+                                   href={`/darsliklar/${item.id}`}
+                                  >
+                                    <h4
+                                      className="color-white"
+                                      style={{ cursor: "pointer" }}
+                                    >
+                                      {item.title}
+                                    </h4>
+                                  </Link>
+                                  <Link
+                                    className="d-flex align-items-center"
+                                    href={`/darsliklar/${item?.id}`}
+                                  >
+                                    <p
+                                      className="mt-15 mb-20 color-white"
+                                      style={{
+                                        fontSize: 14,
+                                      }}
+                                    >
+                                      {item.description}
+                                    </p>
+                                  </Link>
+                                </div>
+                                <div className="row">
+                                  <div className="col-7 d-flex">
+                                    <div className="color-gray-700 text-sm mr-15">
+                                      <span className="color-gray-700 text-sm timeread">
+                                        {item.created_at}
+                                      </span>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
+                          );
+                        })}
                     </div>
-                  </div>
+                  </>
                 </div>
               </div>
             </div>

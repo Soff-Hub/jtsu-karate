@@ -29,44 +29,42 @@ export default function Home() {
             <div className="row">
               <div className="col-xl-10 col-lg-12 m-auto">
                 <div className="text-center mt-20">
-                  <ul className="d-flex  gap-5 align-items-center justify-content-center">
-                    <li>
+                  <ul className="col-md-12 row  gap-2 align-items-center">
+                    <li className="col-md-2">
                       <a
                         href="tel:+998707171776"
                         target="_blank"
                         style={{ fontSize: "18px" }}
                       >
-                        <span>
-                          <i className="fa-solid fa-phone-volume mx-1"></i>{" "}
-                          <strong>+998707171776</strong>
+                        <span className="d-flex align-items-center gap-2 text_sizes">
+                          <i className="fa-solid fa-phone-volume "></i>  <h6 className="text_sizes">+998707171776</h6>
                         </span>
                       </a>
                     </li>
-                    <li>
+                    <li className="col-md-2">
                       <a
                         href="mailto: info@jtsu.uz"
                         style={{ fontSize: "18px" }}
                         target="_blank"
                       >
-                        <span>
-                          <i className="fa-solid fa-envelope mx-1"></i>{" "}
-                          <strong> info@jtsu.uz</strong>
+                        <span className="d-flex align-items-center gap-2 text_sizes">
+                          <i className="fa-solid fa-envelope "></i> <h6 className="text_sizes"> info@jtsu.uz</h6>
                         </span>
                       </a>
                     </li>
-                    <li>
+                    <li className="col-md-6">
                       <a
                         href="https://maps.app.goo.gl/eL577Z9vywX4CCJC6"
                         style={{ fontSize: "18px" }}
                         target="_blank"
                       >
-                        <span>
-                          <i className="fa-solid fa-envelope mx-1"></i>{" "}
-                          <strong>
+                        <span className="d-flex align-items-center gap-2 text_sizes">
+                        <i className="fa-solid fa-location-dot"></i>
+                          <h6 className="text_sizes">
                             {t(
                               "Toshkent viloyati, Chirchiq shahri, Sportchilar ko'chasi, 19-uy"
                             )}
-                          </strong>
+                          </h6>
                         </span>
                       </a>
                     </li>

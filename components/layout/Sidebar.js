@@ -1,45 +1,30 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = ({ openClass }) => {
+  const { textSize } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
-  const [isActive, setIsActive] = useState({
-    status: false,
-    key: "",
-  });
-
   const router = useRouter();
 
-  const handleToggle = (key) => {
-    if (isActive.key === key) {
-      setIsActive({
-        status: false,
-      });
-    } else {
-      setIsActive({
-        status: true,
-        key,
-      });
-    }
+  const profilePage = () => {
+    router.push("/profile");
   };
+
   return (
     <>
       <div
         className={`mobile-header-active mobile-header-wrapper-style perfect-scrollbar bg-gray-900 ${openClass}`}
+        style={{ maxHeight: "100vh" }}
       >
         <div className="mobile-header-wrapper-inner">
           <div className="mobile-header-content-area">
-            <div className="mobile-logo border-gray-800">
-              <Link className="d-flex" href="/">
+            <div className="mobile-logo border-gray-800 ">
+              <Link className="d-flex align-itemd-start" href="/">
                 <img
-                  className="logo-night"
-                  alt="GenZ"
-                  src="/assets/imgs/page/logo/logo-1.png"
-                />
-                <img
-                  className="d-none logo-day"
+                  className="logo-day"
                   alt="GenZ"
                   src="/assets/imgs/page/logo/logo-1.png"
                 />
@@ -51,7 +36,10 @@ const Sidebar = ({ openClass }) => {
                   <ul className="mobile-menu">
                     <li>
                       <Link
-                        className={router.asPath === "/" ? "active" : ""}
+                        style={{ fontSize: textSize }}
+                        className={`${
+                          router.asPath === "/" ? "active " : "color-gray-500"
+                        }`}
                         href="/"
                       >
                         {t("Asosiy Sahifa")}
@@ -59,53 +47,55 @@ const Sidebar = ({ openClass }) => {
                     </li>
                     <li>
                       <Link
-                        className={
-                          router.asPath === "/afzalliklarList" ? "active" : ""
-                        }
-                        href="/afzalliklarList"
+                        style={{ fontSize: textSize }}
+                        className={`${
+                          router.pathname.split("/").includes("videolar")
+                            ? "active"
+                            : "color-gray-500"
+                        }`}
+                        href="/videolar"
                       >
-                        Afzalliklarimiz
+                        {t("Video qo'llanmalar")}
                       </Link>
                     </li>
                     <li>
                       <Link
-                        className={
-                          router.asPath === "/page-about" ? "active" : ""
-                        }
-                        href="/page-about"
+                        style={{ fontSize: textSize }}
+                        className={`${
+                          router.pathname.split("/").includes("darsliklar")
+                            ? "active"
+                            : "color-gray-500"
+                        }`}
+                        href="/darsliklar"
                       >
-                        Maqolalar
+                        {t("Darsliklar")}
                       </Link>
                     </li>
                     <li>
                       <Link
-                        className={
-                          router.asPath === "/page-portfolio" ? "active" : ""
-                        }
-                        href="/page-portfolio"
+                        style={{ fontSize: textSize }}
+                        className={`${
+                          router.pathname.split("/").includes("maqolalar")
+                            ? "active"
+                            : "color-gray-500"
+                        }`}
+                        href="/maqolalar"
                       >
-                        Kurslar
+                        {t("Hujjatlar")}
                       </Link>
                     </li>
 
                     <li>
                       <Link
-                        className={
-                          router.asPath === "/page-portfolio-2" ? "active" : ""
-                        }
-                        href="/page-portfolio-2"
-                      >
-                        Galereya
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className={
-                          router.asPath === "/page-contact" ? "active" : ""
-                        }
+                        style={{ fontSize: textSize }}
+                        className={`${
+                          router.asPath === "/page-contact"
+                            ? "active"
+                            : "color-gray-500"
+                        }`}
                         href="/page-contact"
                       >
-                        Aloqa
+                        {t("Aloqa")}
                       </Link>
                     </li>
                   </ul>

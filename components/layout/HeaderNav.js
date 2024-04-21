@@ -82,41 +82,42 @@ const HeaderNav = () => {
         className={scroll ? "header sticky-bar stick" : "header sticky-bar "}
       >
         <div className="container">
-          <div className="main-header" style={{ position: "relative" }}>
+          <div className="main-header d-flex justify-content-xl-between justify-content-center" style={{ position: "relative" }}>
             <div
               className="header-nav d-flex align-items-center"
-              style={{ width: "100%" }}
             >
-              <ul className="d-flex  gap-5 align-items-center">
-                <li>
-                  <a
-                    className="text-white"
-                    href="https://jtsu.uz/uz"
-                    target="_blank"
-                  >
-                    <strong>{t("Asosiy sayt")}</strong>
-                  </a>
-                </li>
-                <li>
-                  <a href="tel:+998707171776" target="_blank">
-                    <span className="text-white">
-                      <i className="fa-solid fa-phone-volume mx-1"></i>{" "}
-                      <strong>+998707171776</strong>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto: info@jtsu.uz" target="_blank">
-                    <span className="text-white">
-                      <i className="fa-solid fa-envelope mx-1"></i>{" "}
-                      <strong> info@jtsu.uz</strong>
-                    </span>
-                  </a>
-                </li>
-              </ul>
+              <nav className="nav-main-menu d-none d-xl-block">
+                <ul className="d-flex  gap-5 align-items-center">
+                  <li>
+                    <a
+                      className="text-white"
+                      href="https://jtsu.uz/uz"
+                      target="_blank"
+                    >
+                      <strong>{t("Asosiy sayt")}</strong>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+998707171776" target="_blank">
+                      <span className="text-white">
+                        <i className="fa-solid fa-phone-volume mx-1"></i>{" "}
+                        <strong>+998707171776</strong>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto: info@jtsu.uz" target="_blank">
+                      <span className="text-white">
+                        <i className="fa-solid fa-envelope mx-1"></i>{" "}
+                        <strong> info@jtsu.uz</strong>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div className="d-flex gap-3  align-items-center mx-4">
+            <div className="d-flex gap-3 mx-3  w-full align-items-center justify-content-center ">
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
@@ -262,7 +263,7 @@ const HeaderNav = () => {
                   <i className="fa-solid fa-search text-white"></i>
                 </strong>
               </div>
-              <div>
+              <div className="nav-main-menu d-none d-xl-block">
                 <strong
                   className="d-flex align-items-center gap-1 text-white"
                   style={{ cursor: "not-allowed" }}

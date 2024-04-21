@@ -80,7 +80,7 @@ export default function Home() {
                     {documents.map((item, i) => (
                       <div
                         key={i}
-                        className="col-6 card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 d-flex gap-2 wow animate__animated animate__fadeIn"
+                        className="col-md-6 card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 d-flex gap-2 wow animate__animated animate__fadeIn"
                         style={{ cursor: "pointer", position: "relative" }}
                         onClick={() => handleDownload(item.file, item.id)}
                       >
@@ -93,7 +93,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="card-info">
-                          <h5 className="mb-10 color-white">
+                          <h6 className="mb-10 color-white">
                             {item.title}
                             <p
                               className="text-truncate d-flex align-items-center justify-content-end gap-1"
@@ -114,12 +114,7 @@ export default function Home() {
                                 {item.download_count}
                               </span>
                             </p>
-                          </h5>
-
-                          {/* <p className="color-gray-500">Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard roadrunner flapped lynx far that and jeepers giggled far and far</p>
-                                                    <div className="row mt-20">
-                                                        <div className="col-7">12.12.2024</div>
-                                                    </div> */}
+                          </h6>
                         </div>
                       </div>
                     ))}

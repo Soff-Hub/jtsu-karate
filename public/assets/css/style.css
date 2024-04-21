@@ -6316,8 +6316,8 @@ input {
   transform: translateX(-50%);
   z-index: -1;
   background-image: url("../imgs/page/homepage/hero-bg.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
+ background-size: cover;
+ background-repeat: no-repeat;
 }
 
 .hero-content-overlay {
@@ -6330,7 +6330,7 @@ input {
   top: 0;
   transform: translateX(-50%);
   z-index: -1;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -6364,12 +6364,31 @@ input {
 }
 
 @media (max-width: 500px) {
+  .icon_search{
+    height: 40px !important;
+    width: 50px !important;
+  }
+  .label_input{
+    height: 40px !important;
+    margin-top: 30px;
+  }
+  .global-search-input{
+    height: 40px !important;
+    padding: 0 0 0 20px !important;
+  }
+  .text_sizes{
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
   .hero-content-overlay {
-    min-height: 350px;
+    min-height: 400px;
   }
 
   .hero-content {
-    min-height: 200px;
+    min-height: 400px;
+  }
+  .banner-home2{
+    padding-top: 20px !important;
   }
 }
 
