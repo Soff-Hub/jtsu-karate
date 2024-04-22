@@ -5,14 +5,17 @@ import { useEffect, useState } from "react";
 import client from "../../repositories/repository";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import Card_skeleton from "../../components/placeholder/card_skeleton";
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { textSize, langauge } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
 
   async function getVideos() {
     try {
+      setLoading(true);
       const resp = await client.get("common/video-tutorials/", {
         headers: {
           "Accept-language": langauge,
@@ -22,6 +25,7 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -63,25 +67,33 @@ export default function Home() {
                   className="row mb-10"
                   data-masonry='{"percentPosition": true }'
                 >
-                  {videos.map((item, i) => (
-                    <div className="col-lg-4" key={i}>
-                      <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
-                        <div className="card-image mb-10">
-                          <Link href={`/videolar/${item.id}`}>
-                            <img src={`${item.image}`} alt="Genz" />
-                          </Link>
-                        </div>
-                        <div className="card-info">
-                          <Link href={`/videolar/${item.id}`}>
-                            <h5 className="color-white mt-10">{item.title}</h5>
-                          </Link>
-                          <div className="row align-items-center mt-10">
-                            <p className="text-truncate">{item?.description}</p>
+                  {loading
+                    ? Array(30)
+                        .fill(0)
+                        .map((_, index) => <Card_skeleton />)
+                    : videos.map((item, i) => (
+                        <div className="col-lg-4" key={i}>
+                          <div className="card-blog-1 border-gray-800 bg-gray-850 hover-up">
+                            <div className="card-image mb-10">
+                              <Link href={`/videolar/${item.id}`}>
+                                <img src={`${item.image}`} alt="Genz" />
+                              </Link>
+                            </div>
+                            <div className="card-info">
+                              <Link href={`/videolar/${item.id}`}>
+                                <h5 className="color-white mt-10">
+                                  {item.title}
+                                </h5>
+                              </Link>
+                              <div className="row align-items-center mt-10">
+                                <p className="text-truncate">
+                                  {item?.description}
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      ))}
                 </div>
               </div>
             </div>

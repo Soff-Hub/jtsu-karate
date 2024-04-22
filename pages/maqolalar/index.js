@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import client from "../../repositories/repository";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import Document_placeholder from "../../components/placeholder/docuents_placeholder";
 
 export default function Home() {
   const [documents, setDocuments] = useState([]);
   const { textSize, langauge } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
+  const [loading, setloading] = useState(false);
 
   async function getDocuments() {
     try {
+      setloading(true);
       const resp = await client.get(`common/documents/`, {
         headers: {
           "Accept-language": langauge,
@@ -21,6 +24,7 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setloading(false);
   }
 
   const handleDownload = async (file, id) => {
@@ -68,7 +72,9 @@ export default function Home() {
                       style={{ fontSize: textSize, lineHeight: "26px" }}
                       className="color-gray-500  mb-20 "
                     >
-                      {t("Sport sohasidagi eng so'ngi Qonuniy hujjatlar bilan tanishing")}
+                      {t(
+                        "Sport sohasidagi eng so'ngi Qonuniy hujjatlar bilan tanishing"
+                      )}
                     </p>
                   </div>
                   <div className="col-lg-12">
@@ -77,47 +83,51 @@ export default function Home() {
                 </div>
                 <div className="box-list-posts mt-20">
                   <div className="row box-list-posts mt-30">
-                    {documents.map((item, i) => (
-                      <div
-                        key={i}
-                        className="col-md-6 card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 d-flex gap-2 wow animate__animated animate__fadeIn"
-                        style={{ cursor: "pointer", position: "relative" }}
-                        onClick={() => handleDownload(item.file, item.id)}
-                      >
-                        <div className="card-image hover-up">
-                          <div>
-                            <img
-                              src="/assets/imgs/page/homepage/document-icon.svg"
-                              alt="Genz"
-                            />
+                    {loading
+                      ? Array(20)
+                          .fill(0)
+                          .map((_, index) => <Document_placeholder />)
+                      : documents.map((item, i) => (
+                          <div
+                            key={i}
+                            className="col-md-6 card-list-posts-small border-bottom border-gray-800 pb-30 mb-30 d-flex gap-2 wow animate__animated animate__fadeIn"
+                            style={{ cursor: "pointer", position: "relative" }}
+                            onClick={() => handleDownload(item.file, item.id)}
+                          >
+                            <div className="card-image hover-up">
+                              <div>
+                                <img
+                                  src="/assets/imgs/page/homepage/document-icon.svg"
+                                  alt="Genz"
+                                />
+                              </div>
+                            </div>
+                            <div className="card-info">
+                              <h6 className="mb-10 color-white">
+                                {item.title}
+                                <p
+                                  className="text-truncate d-flex align-items-center justify-content-end gap-1"
+                                  style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    right: 20,
+                                    fontSize: "12px",
+                                  }}
+                                >
+                                  <img src="/assets/imgs/page/homepage/download-icon.svg" />
+                                  <span
+                                    style={{
+                                      fontSize: textSize,
+                                      lineHeight: "26px",
+                                    }}
+                                  >
+                                    {item.download_count}
+                                  </span>
+                                </p>
+                              </h6>
+                            </div>
                           </div>
-                        </div>
-                        <div className="card-info">
-                          <h6 className="mb-10 color-white">
-                            {item.title}
-                            <p
-                              className="text-truncate d-flex align-items-center justify-content-end gap-1"
-                              style={{
-                                position: "absolute",
-                                top: 0,
-                                right: 20,
-                                fontSize: "12px",
-                              }}
-                            >
-                              <img src="/assets/imgs/page/homepage/download-icon.svg" />
-                              <span
-                                style={{
-                                  fontSize: textSize,
-                                  lineHeight: "26px",
-                                }}
-                              >
-                                {item.download_count}
-                              </span>
-                            </p>
-                          </h6>
-                        </div>
-                      </div>
-                    ))}
+                        ))}
                   </div>
                 </div>
               </div>

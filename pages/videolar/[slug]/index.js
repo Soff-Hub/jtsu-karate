@@ -6,16 +6,19 @@ import client from "../../../repositories/repository";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import Card_skeleton from "../../../components//placeholder/card_skeleton"
 
 export default function Home() {
   const [video, setVideo] = useState([]);
   const { langauge } = useSelector((state) => state?.textClass);
+  const [loading, setLoading] = useState(false);
 
   const { query } = useRouter();
   const { t } = useTranslation();
 
   async function getVideos() {
     try {
+      setLoading(true);
       const resp = await client.get(`common/video-tutorials/${query?.slug}`, {
         headers: {
           "Accept-language": langauge,
@@ -25,6 +28,7 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -51,7 +55,11 @@ export default function Home() {
                 </div>
 
                 <div className="row mt-10">
-                  {video?.contents
+                  {loading
+                    ? Array(30)
+                        .fill(0)
+                        .map((_, index) => <Card_skeleton />)
+                    : video?.contents
                     ? video?.contents.map((item, i) => (
                         <div className="col-lg-4" key={i}>
                           <div

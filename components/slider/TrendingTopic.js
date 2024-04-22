@@ -4,14 +4,17 @@ import { useSelector } from "react-redux";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import client from "../../repositories/repository";
+import Image_placeholder from "../placeholder/image_placeholder";
 
 SwiperCore.use([Autoplay, Navigation]);
 const TrendingTopic = () => {
   const [videoBanner, setVideoBanner] = useState([]);
   const { langauge } = useSelector((state) => state?.textClass);
+  const [loading, setLoading] = useState(false);
 
   async function getVideosBanners() {
     try {
+      setLoading(true);
       const resp = await client.get(`/common/students/`, {
         headers: {
           "Accept-language": langauge,
@@ -21,6 +24,8 @@ const TrendingTopic = () => {
     } catch (err) {
       console.log(err);
     }
+
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -70,22 +75,30 @@ const TrendingTopic = () => {
           }}
           className="swiper-wrapper"
         >
-          {videoBanner.map((item, i) => (
-            <SwiperSlide className="swiper-slide" key={i}>
-              <div className="card-style-1">
-                <Link href="/blog-archive">
-                  <div className="card-image">
-                    <img src={item.image} alt="Genz" />
-                    <div className="card-info">
-                      <div className="info-bottom">
-                        <h6 className="color-white mb-5">{item.name}</h6>
+          {loading
+            ? Array(5)
+                .fill(0)
+                .map((_, index) => (
+                  <SwiperSlide className="swiper-slide" key={index}>
+                    <Image_placeholder />
+                  </SwiperSlide>
+                ))
+            : videoBanner.map((item, i) => (
+                <SwiperSlide className="swiper-slide" key={i}>
+                  <div className="card-style-1">
+                    <Link href="/blog-archive">
+                      <div className="card-image">
+                        <img src={item.image} alt="Genz" />
+                        <div className="card-info">
+                          <div className="info-bottom">
+                            <h6 className="color-white mb-5">{item.name}</h6>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-            </SwiperSlide>
-          ))}
+                </SwiperSlide>
+              ))}
         </Swiper>
         <div className="swiper-button-prev swiper-button-prev-style-2" />
         <div className="swiper-button-next swiper-button-next-style-2" />

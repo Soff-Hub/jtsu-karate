@@ -38,6 +38,8 @@ export default function Home() {
     }
   }, [query?.pid, langauge]);
 
+
+
   return (
     <>
       <Head>
@@ -118,7 +120,7 @@ export default function Home() {
                                   >
                                     <div className="image-post">
                                       <Link href={`/videolar/${item.id}`}>
-                                        <img src={item.image} alt="Genz" />
+                                        <img src={item.poster} alt="Genz" style={{objectFit:"cover"}} />
                                       </Link>
                                     </div>
                                     <div className="info-post border-gray-800">

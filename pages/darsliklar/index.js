@@ -5,14 +5,17 @@ import { useEffect, useState } from "react";
 import client from "../../repositories/repository";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import TextBook_placeholder from "../../components/placeholder/textBook_placeholder";
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
-  const { textSize, langauge } = useSelector((state) => state?.textClass);
+  const { langauge } = useSelector((state) => state?.textClass);
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
   async function getVideos() {
     try {
+      setLoading(true);
       const resp = await client.get("common/text-books/", {
         headers: {
           "Accept-language": langauge,
@@ -22,6 +25,7 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -34,7 +38,6 @@ export default function Home() {
         <title>Genx - Blog archive 3</title>
       </Head>
       <Layout>
-
         <div className="container">
           <div className="row">
             <div className="col-xl-11 m-auto col-lg-12">
@@ -54,72 +57,74 @@ export default function Home() {
                       )}
                     </p>
                     <div id="postList" className="box-list-posts mt-30">
-                      {videos &&
-                        videos.map((item) => {
-                          return (
-                            <div
-                              key={item.id}
-                              className="card-list-posts wow animate__animated animate__fadeIn mb-30"
-                            >
-                              <div className="card-image hover-up">
-                                <Link
-                                  href={`/darsliklar/${item.id}`}
-                                  className="h-100"
-                                >
-                                  <img
-                                    className="h-100"
-                                    src={item.image}
-                                    alt="mentor"
-                                  />
-                                </Link>
-                              </div>
+                      {loading
+                        ? Array(20)
+                            .fill(0)
+                            .map((_, index) => <TextBook_placeholder />)
+                        : videos &&
+                          videos.map((item) => {
+                            return (
                               <div
-                                className="card-info"
-                                style={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  justifyContent: "space-between",
-                                  padding: "10px 0",
-                                }}
+                                key={item.id}
+                                className="card-list-posts wow animate__animated animate__fadeIn mb-30"
                               >
-                                <div>
+                                <div className="card-image hover-up">
                                   <Link
-                                   href={`/darsliklar/${item.id}`}
+                                    href={`/darsliklar/${item.id}`}
+                                    className="h-100"
                                   >
-                                    <h4
-                                      className="color-white"
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {item.title}
-                                    </h4>
-                                  </Link>
-                                  <Link
-                                    className="d-flex align-items-center"
-                                    href={`/darsliklar/${item?.id}`}
-                                  >
-                                    <p
-                                      className="mt-15 mb-20 color-white"
-                                      style={{
-                                        fontSize: 14,
-                                      }}
-                                    >
-                                      {item.description}
-                                    </p>
+                                    <img
+                                      className="h-100"
+                                      src={item.image}
+                                      alt="mentor"
+                                    />
                                   </Link>
                                 </div>
-                                <div className="row">
-                                  <div className="col-7 d-flex">
-                                    <div className="color-gray-700 text-sm mr-15">
-                                      <span className="color-gray-700 text-sm timeread">
-                                        {item.created_at}
-                                      </span>
+                                <div
+                                  className="card-info"
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "space-between",
+                                    padding: "10px 0",
+                                  }}
+                                >
+                                  <div>
+                                    <Link href={`/darsliklar/${item.id}`}>
+                                      <h4
+                                        className="color-white"
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {item.title}
+                                      </h4>
+                                    </Link>
+                                    <Link
+                                      className="d-flex align-items-center"
+                                      href={`/darsliklar/${item?.id}`}
+                                    >
+                                      <p
+                                        className="mt-15 mb-20 color-white"
+                                        style={{
+                                          fontSize: 14,
+                                        }}
+                                      >
+                                        {item.description}
+                                      </p>
+                                    </Link>
+                                  </div>
+                                  <div className="row">
+                                    <div className="col-7 d-flex">
+                                      <div className="color-gray-700 text-sm mr-15">
+                                        <span className="color-gray-700 text-sm timeread">
+                                          {item.created_at}
+                                        </span>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
                     </div>
                   </>
                 </div>

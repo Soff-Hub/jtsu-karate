@@ -60,7 +60,7 @@ export default function Home() {
             <div className="row">
               <div className="col-xl-10 col-lg-12 m-auto">
                 <div className="text-center mt-20">
-                  <ul className="col-md-12 row  gap-2 align-items-center">
+                  <ul className="col-md-12 row  gap-2  justify-content-center align-items-center">
                     <li className="col-md-2">
                       <a
                         href="tel:+998707171776"

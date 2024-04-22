@@ -6,16 +6,20 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import client from "../repositories/repository";
 import { useSelector } from "react-redux";
+import Card_skeleton from "../components/placeholder/card_skeleton";
 
 export default function Home() {
   const [video, setVideo] = useState([]);
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const { textSize, langauge } = useSelector((state) => state?.textClass);
 
   const { t } = useTranslation();
 
   async function getVideos() {
     try {
+      setLoading2(true);
       const resp = await client.get(`common/video-tutorials/`, {
         headers: {
           "Accept-language": langauge,
@@ -25,10 +29,12 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setLoading2(false);
   }
 
   async function getNews() {
     try {
+      setLoading(true);
       const resp = await client.get(`common/text-books/`, {
         headers: {
           "Accept-language": langauge,
@@ -38,6 +44,7 @@ export default function Home() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -112,46 +119,58 @@ export default function Home() {
                       {t("Karate sohasidagi darsliklar bilan tanishing")}
                     </p>
                   </div>
-                  {news.map((event) => (
-                    <div
-                      key={event.id}
-                      className="col-lg-4 wow animate__animated animate__fadeIn"
-                      data-wow-delay={0}
-                    >
-                      <div className="card-blog-1 hover-up">
-                        <div className="card-image">
-                          <Link href={`/darsliklar/${event?.id}`}>
-                            <img
-                              src={event?.image}
-                              alt="Genz"
-                              style={{ objectFit: "contain" }}
-                            />
-                          </Link>
-                        </div>
-                        <div className="card-info">
-                          <Link href={`/darsliklar/${event?.id}`}>
-                            <h5
-                              className="color-white"
-                              style={{ fontSize: textSize, lineHeight: "24px" }}
-                            >
-                              {event?.title}
-                            </h5>
-                          </Link>
+                  {loading
+                    ? Array(3)
+                        .fill(0)
+                        .map((_, index) => <Card_skeleton />)
+                    : news.map((event) => (
+                        <div
+                          key={event.id}
+                          className="col-lg-4 wow animate__animated animate__fadeIn"
+                          data-wow-delay={0}
+                        >
+                          <div className="card-blog-1 hover-up">
+                            <div className="card-image">
+                              <Link href={`/darsliklar/${event?.id}`}>
+                                <img
+                                  src={event?.image}
+                                  alt="Genz"
+                                  style={{ objectFit: "contain" }}
+                                />
+                              </Link>
+                            </div>
+                            <div className="card-info">
+                              <Link href={`/darsliklar/${event?.id}`}>
+                                <h5
+                                  className="color-white"
+                                  style={{
+                                    fontSize: textSize,
+                                    lineHeight: "24px",
+                                  }}
+                                >
+                                  {event?.title}
+                                </h5>
+                              </Link>
 
-                          <div className="row align-items-center mt-5">
-                            <p
-                              style={{ maxHeight: "56px", overflow: "hidden" }}
-                            >
-                              {event?.description}
-                            </p>
-                          </div>
-                          <div className="row align-items-center mt-10">
-                            <p className="text-truncate">{event?.created_at}</p>
+                              <div className="row align-items-center mt-5">
+                                <p
+                                  style={{
+                                    maxHeight: "56px",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  {event?.description}
+                                </p>
+                              </div>
+                              <div className="row align-items-center mt-10">
+                                <p className="text-truncate">
+                                  {event?.created_at}
+                                </p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      ))}
                 </div>
                 <div className="text-center">
                   <Link
@@ -181,45 +200,49 @@ export default function Home() {
                   <div className="col-12">
                     <div className="box-list-posts">
                       <div className="row">
-                        {video.slice(0, 3).map((item, i) => (
-                          <div className="col-lg-4" key={i}>
-                            <div
-                              className="card-blog-1 border-gray-800 bg-gray-850 hover-up"
-                              style={{
-                                overflow: "hidden",
-                                paddingBottom: "10px",
-                              }}
-                            >
-                              <div className="card-image mb-10">
-                                <Link href={`/videolar/${item?.id}`}>
-                                  <img
-                                    src={`${item.image}`}
-                                    alt={item?.title}
-                                  />
-                                </Link>
-                              </div>
-                              <div className="card-info">
-                                <Link href={`/videolar/1`}>
-                                  <h5
-                                    className="color-white mt-10"
-                                    style={{ fontSize: textSize }}
-                                  >
-                                    {item.title}
-                                  </h5>
-                                </Link>
-                                <div className="row align-items-center mt-10">
-                                  <p
-                                    style={{
-                                      lineHeight: "20px",
-                                    }}
-                                  >
-                                    {item?.description}
-                                  </p>
+                        {loading2
+                          ? Array(3)
+                              .fill(0)
+                              .map((_, index) => <Card_skeleton />)
+                          : video.slice(0, 3).map((item, i) => (
+                              <div className="col-lg-4" key={i}>
+                                <div
+                                  className="card-blog-1 border-gray-800 bg-gray-850 hover-up"
+                                  style={{
+                                    overflow: "hidden",
+                                    paddingBottom: "10px",
+                                  }}
+                                >
+                                  <div className="card-image mb-10">
+                                    <Link href={`/videolar/${item?.id}`}>
+                                      <img
+                                        src={`${item.image}`}
+                                        alt={item?.title}
+                                      />
+                                    </Link>
+                                  </div>
+                                  <div className="card-info">
+                                    <Link href={`/videolar/1`}>
+                                      <h5
+                                        className="color-white mt-10"
+                                        style={{ fontSize: textSize }}
+                                      >
+                                        {item.title}
+                                      </h5>
+                                    </Link>
+                                    <div className="row align-items-center mt-10">
+                                      <p
+                                        style={{
+                                          lineHeight: "20px",
+                                        }}
+                                      >
+                                        {item?.description}
+                                      </p>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        ))}
+                            ))}
                         <div className="text-center">
                           <Link
                             style={{ fontSize: textSize }}
