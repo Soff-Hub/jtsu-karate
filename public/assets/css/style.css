@@ -3106,21 +3106,20 @@ input {
   width: 40px;
   height: 22px;
   margin-left: 0px;
-  background-image: url(../imgs/template/icons/mode.svg);
   background-position: left 2px center;
-  background-color: #7f92b0;
-  border-color: #7f92b0;
+  background-color: #f1efef;
+  border-color: #f1efef;
   background-size: 18px;
 }
 
 .switch-button .form-check-input:checked {
-  background-color: #222f43;
-  border-color: #222f43;
+  background-color: #f1efef;
+  border-color: #f1efef;
 }
 
 .switch-button .form-switch .form-check-input:checked {
   background-position: right 2px center;
-  background-image: url(../imgs/template/icons/mode.svg);
+
 }
 
 .sticky-bar.stick {
@@ -8463,9 +8462,6 @@ body {
   display: none;
 }
 
-.switch-button .form-switch .form-check-input {
-  background-image: url(../imgs/template/icons/mode-day.svg);
-}
 
 .pagination li a {
   background-color: #7f92b0;
@@ -8590,8 +8586,8 @@ body {
 }
 
 .switch-button .form-check-input:checked {
-  background-color: #adb5c1;
-  border-color: #adb5c1;
+  background-color: #333;
+  border-color: #333;
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -8688,3 +8684,5 @@ body {
     
   }
 }
+
+

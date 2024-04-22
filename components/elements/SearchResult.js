@@ -62,7 +62,7 @@ export default function SearchResult({ searchResult, searchVal }) {
           ))}
         {searchResult?.length === 0 ? "Natijalar topilmadi!" : ""}
       </div>
-      {searchResult?.length > 4 && (
+      {searchResult?.length > 6 && (
         <div
           onClick={() => push(`/search/${searchVal}`)}
           style={{ paddingTop: "10px", cursor: "pointer" }}

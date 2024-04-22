@@ -13,7 +13,7 @@ function SwitchButton() {
   }
 
   return (
-    <div className="switch-button">
+    <div className="switch-button" style={{cursor:"pointer"}}>
       <div className="form-check form-switch">
         <input
           className="form-check-input"

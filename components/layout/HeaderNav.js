@@ -10,6 +10,7 @@ import useDebounce from "../../util/useDebounce";
 import client from "../../repositories/repository";
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguageData, setTextSize } from "../../store";
+import SwitchButton from "../elements/SwitchButton";
 
 const HeaderNav = () => {
   const [scroll, setScroll] = useState(0);
@@ -28,6 +29,7 @@ const HeaderNav = () => {
     setLang(lang);
     dispatch(setLanguageData(lang));
   };
+
 
   const handleChange = (text) => {
     dispatch(setTextSize(text));
@@ -118,6 +120,7 @@ const HeaderNav = () => {
             </div>
 
             <div className="d-flex gap-3 mx-3  w-full align-items-center justify-content-center ">
+              <SwitchButton/>
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
