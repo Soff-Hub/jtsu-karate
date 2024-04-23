@@ -105,7 +105,7 @@ export default function Home() {
                                     className="item-post wow animate__animated animate__fadeIn"
                                   >
                                     <div className="image-post">
-                                      <Link href={`/videolar/${item.id}`}>
+                                      <Link href={`/videolar/${video.id}/preview/${item.id}`}>
                                         <img
                                           src={item.poster}
                                           alt="Genz"
@@ -114,7 +114,7 @@ export default function Home() {
                                       </Link>
                                     </div>
                                     <div className="info-post border-gray-800">
-                                      <Link href={`/videolar/${item.id}`}>
+                                      <Link href={`/videolar/${video.id}/preview/${item.id}`}>
                                         <h6 className="color-white">
                                           {item.title}
                                         </h6>

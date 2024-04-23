@@ -2605,15 +2605,15 @@ input {
 }
 
 .list-posts .item-post .image-post {
-  min-width: 64px;
-  max-width: 64px;
+  /* min-width: 64px; */
+  /* max-width: 64px; */
   margin-right: 15px;
 }
 
 .list-posts .item-post .image-post img {
-  height: 64px;
-  width: 64px;
-  border-radius: 10%;
+  /* height: 64px; */
+  /* width: 64px; */
+  /* border-radius: 10%; */
 }
 
 .list-posts .item-post .info-post {
