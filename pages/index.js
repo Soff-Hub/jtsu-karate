@@ -94,8 +94,8 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="mb-70 mt-30">
-                  <div className="box-topics box-topics-2 border-gray-800 bg-gray-850">
-                    <div className="row">
+                  <div className="box-topics box-topics-2 p-0 border-gray-800 bg-gray-850">
+                    <div className="row w-full">
                       <div className="col-lg-12">
                         <div className="box-swiper">
                           <TrendingTopic />

@@ -1,6 +1,6 @@
 /*DARK MODE*/
 
- {
+.theme-day {
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: $color-gray-600-day;
         opacity: 1; /* Firefox */
@@ -139,7 +139,9 @@
     .logo-night {
         display: none;
     }
-
+    .switch-button .form-switch .form-check-input {
+        background-image: url(../imgs/template/icons/mode-day.svg);
+    }
     .pagination {
         li {
             a {

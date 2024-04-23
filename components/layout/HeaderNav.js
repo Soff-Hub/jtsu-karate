@@ -30,7 +30,6 @@ const HeaderNav = () => {
     dispatch(setLanguageData(lang));
   };
 
-
   const handleChange = (text) => {
     dispatch(setTextSize(text));
   };
@@ -84,10 +83,11 @@ const HeaderNav = () => {
         className={scroll ? "header sticky-bar stick" : "header sticky-bar "}
       >
         <div className="container">
-          <div className="main-header d-flex justify-content-xl-between justify-content-center" style={{ position: "relative" }}>
-            <div
-              className="header-nav d-flex align-items-center"
-            >
+          <div
+            className="main-header d-flex justify-content-xl-between justify-content-center"
+            style={{ position: "relative" }}
+          >
+            <div className="header-nav d-flex align-items-center">
               <nav className="nav-main-menu d-none d-xl-block">
                 <ul className="d-flex  gap-5 align-items-center">
                   <li>
@@ -96,7 +96,7 @@ const HeaderNav = () => {
                       href="https://jtsu.uz/uz"
                       target="_blank"
                     >
-                      <strong>{t("Asosiy sayt")}</strong>
+                      <strong>{t("JTSU.UZ")}</strong>
                     </a>
                   </li>
                   <li>
@@ -120,7 +120,7 @@ const HeaderNav = () => {
             </div>
 
             <div className="d-flex gap-3 mx-3  w-full align-items-center justify-content-center ">
-              <SwitchButton/>
+              <SwitchButton />
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
@@ -267,13 +267,14 @@ const HeaderNav = () => {
                 </strong>
               </div>
               <div className="nav-main-menu d-none d-xl-block">
-                <strong
-                  className="d-flex align-items-center gap-1 text-white"
-                  style={{ cursor: "not-allowed" }}
-                >
-                  {t("Kirish")}{" "}
-                  <i className="fa-solid fa-arrow-right-to-bracket "></i>
-                </strong>
+                <div className="btn btn-linear hover-up hover-shadow" style={{padding:"5px 10px",fontSize:"13px"}}>
+                  <strong
+                    className="d-flex align-items-center gap-1 text-white"
+                    style={{ cursor: "not-allowed",fontSize:textSize }}
+                  >
+                    {t("Kirish")}{" "}
+                  </strong>
+                </div>
               </div>
             </div>
           </div>

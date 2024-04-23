@@ -6,7 +6,7 @@ import client from "../../../repositories/repository";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import Card_skeleton from "../../../components//placeholder/card_skeleton"
+import Card_skeleton from "../../../components//placeholder/card_skeleton";
 
 export default function Home() {
   const [video, setVideo] = useState([]);
@@ -49,8 +49,9 @@ export default function Home() {
               <div className="col-xl-1" />
               <div className="col-xl-10 col-lg-12">
                 <div className="row mt-50 align-items-end">
-                  <div className="col-lg-9 col-md-8">
+                  <div className="col-lg-12 col-md-12">
                     <h3 className="color-linear">{video?.title}</h3>
+                    <p className="mt-5 mb-10">{video?.description}</p>
                   </div>
                 </div>
 
@@ -67,6 +68,7 @@ export default function Home() {
                             style={{ position: "relative" }}
                           >
                             <div className="card-image mb-10">
+                             
                               <iframe
                                 width={"100%"}
                                 height="100%"
@@ -79,6 +81,7 @@ export default function Home() {
                                 title="YouTube video player"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
                               ></iframe>
                             </div>
                             <div className="card-info">
@@ -90,7 +93,11 @@ export default function Home() {
                                 </h5>
                               </Link>
                               <div className="row align-items-center mt-10">
-                                <p className="">{item?.description}</p>
+                                <p
+                                  style={{ height: "56px", overflow: "hidden" }}
+                                >
+                                  {item?.description}
+                                </p>
                                 <p
                                   className="text-truncate d-flex align-items-center justify-content-end"
                                   style={{

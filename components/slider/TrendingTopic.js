@@ -92,6 +92,9 @@ const TrendingTopic = () => {
                         <div className="card-info">
                           <div className="info-bottom">
                             <h6 className="color-white mb-5">{item.name}</h6>
+                            <p style={{fontSize:"12px",color:"white",lineHeight:"16px"}}>
+                              {item?.description}
+                            </p>
                           </div>
                         </div>
                       </div>
