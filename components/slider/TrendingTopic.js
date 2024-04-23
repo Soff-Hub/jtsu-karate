@@ -86,9 +86,9 @@ const TrendingTopic = () => {
             : videoBanner.map((item, i) => (
                 <SwiperSlide className="swiper-slide" key={i}>
                   <div className="card-style-1">
-                    <Link href="/blog-archive">
+                    <Link href="/">
                       <div className="card-image">
-                        <img src={item.image} alt="Genz" />
+                        <img src={item.image} className="image_sliders" alt="Genz"  />
                         <div className="card-info">
                           <div className="info-bottom">
                             <h6 className="color-white mb-5">{item.name}</h6>
