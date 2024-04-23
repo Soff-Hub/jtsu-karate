@@ -9,8 +9,8 @@ import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [video, setVideo] = useState(null);
-  const {langauge } = useSelector((state) => state?.textClass);
-  const {t}= useTranslation()
+  const { langauge } = useSelector((state) => state?.textClass);
+  const { t } = useTranslation();
 
   const { query } = useRouter();
 
@@ -38,8 +38,6 @@ export default function Home() {
     }
   }, [query?.pid, langauge]);
 
-
-
   return (
     <>
       <Head>
@@ -48,12 +46,17 @@ export default function Home() {
       <Layout>
         <div className="cover-home3">
           <div className="container">
-            <div className="row">
-              <div className="col-xl-1" />
-              <div className="col-xl-10 col-lg-12">
+            <div className="row ">
+              <div className="col-md-12">
                 <div className="row mt-50 align-items-end">
-                  <div className="col-lg-9 col-md-8">
+                  <div className="col-lg-8 d-flex align-items-center justify-content-between">
                     <h3 className="color-linear">{video?.title}</h3>
+                    <p
+                      className="text-truncate d-flex align-items-center justify-content-center"
+                    >
+                      <img src="/assets/imgs/page/homepage/view-icon.svg" />
+                      <span style={{color:"#333"}}>{2}</span>
+                    </p>
                   </div>
                 </div>
                 <div className="row mt-10">
@@ -77,38 +80,21 @@ export default function Home() {
                           ></iframe>
                         )}
                       </div>
-                      <p className="text-lg color-gray-500 mb-50">
+                      <p
+                        className="text-lg color-gray-500 mb-50"
+                        style={{ textAlign: "justify", fontSize: "15px" }}
+                      >
                         {video?.description}
                       </p>
-                      {/* <h3 className="color-white mb-30">Use your headings</h3>
-                      <p className="text-lg color-gray-500">
-                        Thirty there &amp; time wear across days, make inside on
-                        these you. Can young a really, roses blog small of song
-                        their dreamy life pretty? Because really duo living to
-                        noteworthy bloom bell. Transform clean daydreaming cute
-                        twenty process rooms cool. White white dreamy
-                        dramatically place everything although. Place out
-                        apartment afternoon whimsical kinder, little romantic
-                        joy we flowers handmade. Thirty she a studio of she
-                        whimsical projects, afternoon effect going an floated
-                        maybe.
-                      </p>
-
-                      <p className="text-lg color-gray-500">
-                        Tortor placerat bibendum consequat sapien, facilisi
-                        facilisi pellentesque morbi. Id consectetur ut vitae a
-                        massa a. Lacus ut bibendum sollicitudin fusce sociis mi.
-                        Dictum volutpat praesent ornare accumsan elit venenatis.
-                        Congue sodales nunc quis ultricies odio porta. Egestas
-                        mauris placerat leo phasellus ut sit.
-                      </p> */}
                     </div>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="col-lg-4 mt-3">
                     <div className="sidebar">
                       <div className="box-sidebar bg-gray-850 border-gray-800">
                         <div className="head-sidebar wow animate__animated animate__fadeIn">
-                          <h5 className="line-bottom">{t("Ommabop videolar")}</h5>
+                          <h5 className="line-bottom">
+                            {t("Ommabop videolar")}
+                          </h5>
                         </div>
                         <div className="content-sidebar">
                           <div className="list-posts">
@@ -120,7 +106,11 @@ export default function Home() {
                                   >
                                     <div className="image-post">
                                       <Link href={`/videolar/${item.id}`}>
-                                        <img src={item.poster} alt="Genz" style={{objectFit:"cover"}} />
+                                        <img
+                                          src={item.poster}
+                                          alt="Genz"
+                                          style={{ objectFit: "cover" }}
+                                        />
                                       </Link>
                                     </div>
                                     <div className="info-post border-gray-800">

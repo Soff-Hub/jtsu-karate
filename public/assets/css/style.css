@@ -2613,7 +2613,7 @@ input {
 .list-posts .item-post .image-post img {
   height: 64px;
   width: 64px;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 .list-posts .item-post .info-post {

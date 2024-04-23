@@ -108,7 +108,7 @@ export default function Home() {
                                 >
                                   <img src="/assets/imgs/page/homepage/view-icon.svg" />
                                   <span>
-                                    {item.get_view_count} {t("marta")}
+                                    {item.get_view_count} 
                                   </span>
                                 </p>
                               </div>
