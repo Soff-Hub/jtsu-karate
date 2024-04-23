@@ -78,7 +78,7 @@ export default function Home() {
                       </div>
 
                       <p
-                        style={{ fontSize: textSize, lineHeight: "26px" }}
+                        style={{ fontSize: textSize, lineHeight: "26px",textAlign:"justify" }}
                         className="color-gray-500 mb-50"
                       >
                         {video?.description}

@@ -139,15 +139,15 @@ export default function Home() {
                             </div>
                             <div className="card-info">
                               <Link href={`/darsliklar/${event?.id}`}>
-                                <h5
-                                  className="color-white"
+                                <h6
+                                  className="color-white text-truncate "
                                   style={{
                                     fontSize: textSize,
                                     lineHeight: "24px",
                                   }}
                                 >
                                   {event?.title}
-                                </h5>
+                                </h6>
                               </Link>
 
                               <div className="row align-items-center mt-5">
@@ -155,6 +155,7 @@ export default function Home() {
                                   style={{
                                     maxHeight: "56px",
                                     overflow: "hidden",
+                                    
                                   }}
                                 >
                                   {event?.description}
@@ -221,18 +222,16 @@ export default function Home() {
                                   </div>
                                   <div className="card-info">
                                     <Link href={`/videolar/1`}>
-                                      <h5
-                                        className="color-white mt-10"
+                                      <h6
+                                        className="color-white mt-10 text-truncate"
                                         style={{ fontSize: textSize }}
                                       >
                                         {item.title}
-                                      </h5>
+                                      </h6>
                                     </Link>
                                     <div className="row align-items-center mt-10">
                                       <p
-                                        style={{
-                                          lineHeight: "20px",
-                                        }}
+                                        style={{ height: "56px", overflow: "hidden" }}
                                       >
                                         {item?.description}
                                       </p>

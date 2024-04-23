@@ -106,6 +106,7 @@ export default function Home() {
                                         className="mt-15 mb-20 color-white"
                                         style={{
                                           fontSize: 14,
+                                          textAlign:"justify"
                                         }}
                                       >
                                         {item.description}

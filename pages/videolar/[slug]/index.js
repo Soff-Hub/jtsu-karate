@@ -51,7 +51,7 @@ export default function Home() {
                 <div className="row mt-50 align-items-end">
                   <div className="col-lg-12 col-md-12">
                     <h3 className="color-linear">{video?.title}</h3>
-                    <p className="mt-5 mb-10">{video?.description}</p>
+                    <p className="mt-5 mb-10" style={{textAlign:"justify"}}>{video?.description}</p>
                   </div>
                 </div>
 
@@ -88,9 +88,9 @@ export default function Home() {
                               <Link
                                 href={`/videolar/${query?.slug}/preview/${item?.id}`}
                               >
-                                <h5 className="color-white mt-10">
+                                <h6 className="color-white mt-10 text-truncate">
                                   {item.title}
-                                </h5>
+                                </h6>
                               </Link>
                               <div className="row align-items-center mt-10">
                                 <p

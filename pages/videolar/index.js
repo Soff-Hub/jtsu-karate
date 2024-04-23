@@ -46,12 +46,12 @@ export default function Home() {
                 <div className="row align-items-end mt-50">
                   <div className="col-lg-9 mb-20 text-center mx-auto">
                     <div className="d-inline-block position-relative">
-                      <h2 className="color-white mb-20 color-linear wow animate__animated animate__fadeIn">
+                      <h3 className="color-white mb-20 color-linear wow animate__animated animate__fadeIn">
                         {t("Karate bo'yicha video qo'llanmalar")}
-                      </h2>
+                      </h3>
                     </div>
                     <p
-                      style={{ fontSize: textSize, lineHeight: "26px" }}
+                      style={{ fontSize: textSize, lineHeight: "26px", textAlign:"justify" }}
                       className="color-gray-500 text-base wow animate__animated animate__fadeIn"
                     >
                       {t(
@@ -81,12 +81,14 @@ export default function Home() {
                             </div>
                             <div className="card-info">
                               <Link href={`/videolar/${item.id}`}>
-                                <h5 className="color-white mt-10">
+                                <h6 className="color-white mt-10 text-truncate">
                                   {item.title}
-                                </h5>
+                                </h6>
                               </Link>
                               <div className="row align-items-center mt-10">
-                                <p className="text-truncate">
+                                <p
+                                  style={{ height: "56px", overflow: "hidden" }}
+                                >
                                   {item?.description}
                                 </p>
                               </div>
