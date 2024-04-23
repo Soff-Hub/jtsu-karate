@@ -75,13 +75,11 @@ export default function Home() {
                     >
                       {t("Xush kelibsiz")}
                     </h6>
-                    <h2 style={{ color: "white" }}>
+                    <h3 style={{ color: "white" }}>
                       {t(
                         "O'zbekiston Davlat Jismoniy Tarbiya va Sport Universiteti ochiq"
                       )}
-                      <span className="color-linear"> {t("Karate")} </span>{" "}
-                      {t("portali")}
-                    </h2>
+                    </h3>
                   </div>
                 </div>
 
