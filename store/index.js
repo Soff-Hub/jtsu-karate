@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const storedSize =
   typeof window !== "undefined" ? localStorage.getItem("textClass") : null;
-const parsedSize = storedSize ? storedSize : "16px";
+const parsedSize = storedSize ? storedSize : null;
 
 const storedLanguage =
   typeof window !== "undefined" ? localStorage.getItem("language") : null;

@@ -8606,10 +8606,10 @@ body {
 
 .dropdown-menu {
   max-width: 200px;
-  z-index: 9999999999999999 !important;
+  z-index: 999 !important;
 }
 .dropdown {
-  z-index: 9999999999999999 !important;
+  z-index: 999 !important;
 }
 .dropdown-menu_width {
   min-width: unset;

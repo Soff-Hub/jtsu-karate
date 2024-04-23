@@ -1,23 +1,20 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 
 const Sidebar = ({ openClass }) => {
   const { textSize } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
   const router = useRouter();
 
-  const profilePage = () => {
-    router.push("/profile");
-  };
+
 
   return (
     <>
       <div
         className={`mobile-header-active mobile-header-wrapper-style perfect-scrollbar bg-gray-900 ${openClass}`}
-        style={{ maxHeight: "100vh" }}
+        style={{ maxHeight: "100vh" }} 
       >
         <div className="mobile-header-wrapper-inner">
           <div className="mobile-header-content-area">

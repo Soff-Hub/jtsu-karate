@@ -26,7 +26,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
         style={{
           margin: "0",
           ...(scroll
-            ? { position: "fixed", top: "50px", zIndex: "99999" }
+            ? { position: "fixed", top: "50px", zIndex: "1000" }
             : {}),
         }}
         className="header sticky-bar bg-gray-900 "

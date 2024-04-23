@@ -70,7 +70,7 @@ export default function Home() {
                   <div className="hero-content-overlay"></div>
                   <div className="text-center">
                     <h6
-                      className="color-gray-600"
+                      className="color-linear"
                       style={{ fontSize: textSize }}
                     >
                       {t("Xush kelibsiz")}

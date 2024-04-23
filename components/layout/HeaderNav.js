@@ -79,8 +79,11 @@ const HeaderNav = () => {
           margin: "0",
           padding: "0",
           height: "50px",
+          ...(scroll
+            ? { position: "fixed", top: "0", zIndex: "1000" }
+            : {}),
         }}
-        className={scroll ? "header sticky-bar stick" : "header sticky-bar "}
+        className="header sticky-bar"
       >
         <div className="container">
           <div
@@ -96,7 +99,7 @@ const HeaderNav = () => {
                       href="https://jtsu.uz/uz"
                       target="_blank"
                     >
-                      <strong>{t("JTSU.UZ")}</strong>
+                      <strong className="color-linear">{t("JTSU.UZ")}</strong>
                     </a>
                   </li>
                   <li>
@@ -120,7 +123,7 @@ const HeaderNav = () => {
             </div>
 
             <div className="d-flex gap-3 mx-3  w-full align-items-center justify-content-center ">
-              <SwitchButton />
+              {/* <SwitchButton />  */}
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
@@ -267,10 +270,13 @@ const HeaderNav = () => {
                 </strong>
               </div>
               <div className="nav-main-menu d-none d-xl-block">
-                <div className="btn btn-linear hover-up hover-shadow" style={{padding:"5px 10px",fontSize:"13px"}}>
+                <div
+                  className="btn btn-linear hover-up hover-shadow"
+                  style={{ padding: "5px 10px", fontSize: "13px" }}
+                >
                   <strong
                     className="d-flex align-items-center gap-1 text-white"
-                    style={{ cursor: "not-allowed",fontSize:textSize }}
+                    style={{ cursor: "not-allowed", fontSize: textSize }}
                   >
                     {t("Kirish")}{" "}
                   </strong>

@@ -51,7 +51,11 @@ export default function Home() {
                       </h3>
                     </div>
                     <p
-                      style={{ fontSize: textSize, lineHeight: "26px", textAlign:"justify" }}
+                      style={{
+                        fontSize: textSize,
+                        lineHeight: "26px",
+                        textAlign: "justify",
+                      }}
                       className="color-gray-500 text-base wow animate__animated animate__fadeIn"
                     >
                       {t(
