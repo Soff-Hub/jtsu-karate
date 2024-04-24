@@ -103,7 +103,7 @@ export default function Home() {
                               </div>
                             </div>
                             <div className="card-info">
-                              <h6 className="mb-10 color-white">
+                              <h6 className="mb-10 color-gray-500">
                                 {item.title}
                                 <p
                                   className="text-truncate d-flex align-items-center justify-content-end gap-1"
