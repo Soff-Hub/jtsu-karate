@@ -27,7 +27,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
           margin: "0",
           filter: theme ? "grayscale(100%)" : "",
           borderTop:theme ? "1px solid #fff" : "",
-          ...(scroll ? { position: "fixed", top: "50px", zIndex: "1000" } : {}),
+          ...(scroll ? { position: "fixed", top: "50px", zIndex: "999" } : {}),
         }}
         className={`header sticky-bar bg-gray-900  `}
       >
