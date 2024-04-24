@@ -13,7 +13,9 @@ export default function Home() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
-  const { textSize, langauge } = useSelector((state) => state?.textClass);
+  const { textSize, langauge} = useSelector(
+    (state) => state?.textClass
+  );
 
   const { t } = useTranslation();
 
@@ -58,7 +60,7 @@ export default function Home() {
         <title>{t("JTSU - Asosiy sahifa")}</title>
       </Head>
       <Layout>
-        <div className="cover-home1">
+        <div className={"cover-home1"}>
           <div className="container">
             <div className="row">
               <div className="col-xl-10 col-lg-12 mx-auto">
@@ -69,10 +71,7 @@ export default function Home() {
                   <div className="hero-content"></div>
                   <div className="hero-content-overlay"></div>
                   <div className="text-center">
-                    <h6
-                      className="color-linear"
-                      style={{ fontSize: textSize }}
-                    >
+                    <h6 className="color-linear" style={{ fontSize: textSize }}>
                       {t("Xush kelibsiz")}
                     </h6>
                     <h3 style={{ color: "white" }}>
@@ -155,7 +154,6 @@ export default function Home() {
                                   style={{
                                     maxHeight: "56px",
                                     overflow: "hidden",
-                                    
                                   }}
                                 >
                                   {event?.description}
@@ -231,7 +229,10 @@ export default function Home() {
                                     </Link>
                                     <div className="row align-items-center mt-10">
                                       <p
-                                        style={{ height: "56px", overflow: "hidden" }}
+                                        style={{
+                                          height: "56px",
+                                          overflow: "hidden",
+                                        }}
                                       >
                                         {item?.description}
                                       </p>

@@ -1,28 +1,28 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { setThemeDark } from "../../store";
 
 function SwitchButton() {
-  const [isChecked, setIsChecked] = useState(false);
+  const { theme } = useSelector((state) => state?.textClass);
+  const dispatch = useDispatch();
 
   function handleChange() {
-    setIsChecked(!isChecked);
-    if (!isChecked) {
-      document.documentElement.classList.add('theme-day');
+    if (theme) {
+      dispatch(setThemeDark(false));
     } else {
-      document.documentElement.classList.remove('theme-day');
+      dispatch(setThemeDark(true));
     }
   }
 
   return (
-    <div className="switch-button" style={{cursor:"pointer"}}>
+    <div className="switch-button" style={{ cursor: "pointer" }}>
       <div className="form-check form-switch">
         <input
           className="form-check-input"
           id="flexSwitchCheckChecked"
           type="checkbox"
           role="switch"
-          checked={isChecked}
+          checked={theme}
           onChange={handleChange}
-          onClick={handleChange}
         />
       </div>
     </div>

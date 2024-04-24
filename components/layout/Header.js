@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Header = ({ handleOpen, handleRemove, openClass }) => {
   const [scroll, setScroll] = useState(0);
-  const { textSize } = useSelector((state) => state?.textClass);
+  const { textSize, theme } = useSelector((state) => state?.textClass);
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -25,11 +25,11 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
       <header
         style={{
           margin: "0",
-          ...(scroll
-            ? { position: "fixed", top: "50px", zIndex: "1000" }
-            : {}),
+          filter: theme ? "grayscale(100%)" : "",
+          borderTop:theme ? "1px solid #fff" : "",
+          ...(scroll ? { position: "fixed", top: "50px", zIndex: "1000" } : {}),
         }}
-        className="header sticky-bar bg-gray-900 "
+        className={`header sticky-bar bg-gray-900  `}
       >
         <div className="container">
           <div className="main-header d-flex justify-content-between">

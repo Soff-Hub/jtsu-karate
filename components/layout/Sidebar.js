@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Sidebar = ({ openClass }) => {
-  const { textSize } = useSelector((state) => state?.textClass);
+  const { textSize, theme } = useSelector((state) => state?.textClass);
   const { t } = useTranslation();
   const router = useRouter();
-
-
 
   return (
     <>
       <div
         className={`mobile-header-active mobile-header-wrapper-style perfect-scrollbar bg-gray-900 ${openClass}`}
-        style={{ maxHeight: "100vh" }} 
+        style={{
+          maxHeight: "100vh",
+          filter: theme ? "grayscale(100%)" : "",
+        }}
       >
         <div className="mobile-header-wrapper-inner">
           <div className="mobile-header-content-area">

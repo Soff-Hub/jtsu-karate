@@ -62,12 +62,12 @@ export default function Home() {
               <div className="col-xl-1" />
               <div className="col-xl-10 col-lg-12">
                 <div className="row mt-20 align-items-end">
-                  <div className="col-lg-8 m-auto text-center">
-                    <h2 className="color-linear">{video?.title}</h2>
+                  <div className="col-md-10 m-auto text-center">
+                    <h3 className="color-linear">{video?.title}</h3>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-lg-8 m-auto">
+                  <div className="col-md-12 m-auto">
                     <div className="content-detail border-gray-800">
                       <div className="mt-30 mb-20">
                         <img

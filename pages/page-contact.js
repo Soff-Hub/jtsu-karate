@@ -11,14 +11,14 @@ import { useSelector } from "react-redux";
 export default function Home() {
   const { t } = useTranslation();
   const [values, setValues] = useState(null);
-  const { langauge } = useSelector((state) => state?.textClass);
+  const { langauge, theme } = useSelector((state) => state?.textClass);
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const resp = await client.post("/common/connection/", values, {
         headers: {
-          "Accept-language": langauge, 
+          "Accept-language": langauge,
         },
       });
       toast(t("Muvaffaqiyatli"), {
@@ -58,7 +58,7 @@ export default function Home() {
         <div className="cover-home3">
           <div className="container">
             <div className="row">
-              <div className="col-xl-10 col-lg-12 m-auto">
+              <div className="col-md-12 m-auto">
                 <div className="text-center mt-20">
                   <ul className="col-md-12 row  gap-2  justify-content-center align-items-center">
                     <li className="col-md-2">
@@ -67,9 +67,12 @@ export default function Home() {
                         target="_blank"
                         style={{ fontSize: "18px" }}
                       >
-                        <span className="d-flex align-items-center gap-2 text_sizes">
+                        <span
+                          style={{ color: theme ? "#fff" : "" }}
+                          className="d-flex align-items-center gap-2 text_sizes"
+                        >
                           <i className="fa-solid fa-phone-volume "></i>{" "}
-                          <h6 className="text_sizes">+998707171776</h6>
+                          <h6 style={{ color: theme ? "#fff" : "" }} className="text_sizes ">+998707171776</h6>
                         </span>
                       </a>
                     </li>
@@ -79,9 +82,9 @@ export default function Home() {
                         style={{ fontSize: "18px" }}
                         target="_blank"
                       >
-                        <span className="d-flex align-items-center gap-2 text_sizes">
+                        <span style={{ color: theme ? "#fff" : "" }}  className="d-flex align-items-center gap-2 text_sizes">
                           <i className="fa-solid fa-envelope "></i>{" "}
-                          <h6 className="text_sizes"> info@jtsu.uz</h6>
+                          <h6 style={{ color: theme ? "#fff" : "" }}  className="text_sizes"> info@jtsu.uz</h6>
                         </span>
                       </a>
                     </li>
@@ -91,9 +94,9 @@ export default function Home() {
                         style={{ fontSize: "18px" }}
                         target="_blank"
                       >
-                        <span className="d-flex align-items-center gap-2 text_sizes">
+                        <span style={{ color: theme ? "#fff" : "" }}  className="d-flex align-items-center gap-2 text_sizes">
                           <i className="fa-solid fa-location-dot"></i>
-                          <h6 className="text_sizes">
+                          <h6 style={{ color: theme ? "#fff" : "" }}  className="text_sizes">
                             {t(
                               "Toshkent viloyati, Chirchiq shahri, Sportchilar ko'chasi, 19-uy"
                             )}

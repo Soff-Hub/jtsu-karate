@@ -92,7 +92,7 @@ export default function Home() {
                                   <div>
                                     <Link href={`/darsliklar/${item.id}`}>
                                       <h4
-                                        className="color-white"
+                                        className="color-linear"
                                         style={{ cursor: "pointer" }}
                                       >
                                         {item.title}
@@ -103,7 +103,7 @@ export default function Home() {
                                       href={`/darsliklar/${item?.id}`}
                                     >
                                       <p
-                                        className="mt-15 mb-20 color-white"
+                                        className="mt-15 mb-20 color-gray-500"
                                         style={{
                                           fontSize: 14,
                                           textAlign:"justify"
@@ -115,8 +115,8 @@ export default function Home() {
                                   </div>
                                   <div className="row">
                                     <div className="col-7 d-flex">
-                                      <div className="color-gray-700 text-sm mr-15">
-                                        <span className="color-gray-700 text-sm timeread">
+                                      <div className="color-gray-500 text-sm mr-15">
+                                        <span className="color-gray-500 text-sm timeread">
                                           {item.created_at}
                                         </span>
                                       </div>

@@ -8,9 +8,14 @@ const storedLanguage =
   typeof window !== "undefined" ? localStorage.getItem("language") : null;
 const parsedLanguage = storedLanguage ? JSON.parse(storedLanguage) : "uz";
 
+const storedTheme =
+  typeof window !== "undefined" ? localStorage.getItem("theme_dark") : false;
+const parsedTheme = storedTheme ? JSON.parse(storedTheme) : false;
+
 const initialState = {
   textSize: parsedSize,
   langauge: parsedLanguage,
+  theme: parsedTheme,
 };
 
 const textClassSlice = createSlice({
@@ -29,8 +34,15 @@ const textClassSlice = createSlice({
         localStorage.setItem("language", JSON.stringify(action.payload));
       }
     },
+    setThemeDark(state, action) {
+      state.theme = action.payload;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme_dark", JSON.stringify(action.payload));
+      }
+    },
   },
 });
 
-export const { setTextSize, setLanguageData  } = textClassSlice.actions;
+export const { setTextSize, setLanguageData, setThemeDark } =
+  textClassSlice.actions;
 export default textClassSlice.reducer;

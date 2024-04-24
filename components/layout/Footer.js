@@ -7,7 +7,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
-  const { langauge, textSize } = useSelector((state) => state?.textClass);
+  const { langauge, textSize, theme } = useSelector(
+    (state) => state?.textClass
+  );
   const { t } = useTranslation();
 
   const [values, setValues] = useState(null);
@@ -50,7 +52,13 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="footer">
+      <footer
+        className="footer pt-30"
+        style={{
+          backgroundColor: !theme ? "black" : "#3d3e3f ",
+          filter: theme ? "grayscale(100%)" : "",
+        }}
+      >
         <div className="container">
           <div className="footer-1 bg-gray-850 border-gray-800">
             <div className="row">

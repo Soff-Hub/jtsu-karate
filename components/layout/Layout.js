@@ -4,9 +4,11 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import HeaderNav from "./HeaderNav";
+import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
   const [openClass, setOpenClass] = useState("");
+  const { theme } = useSelector((state) => state?.textClass);
 
   const handleOpen = () => {
     document.body.classList.add("mobile-menu-active");
@@ -30,7 +32,7 @@ const Layout = ({ children }) => {
         openClass={openClass}
       />
       <Sidebar openClass={openClass} />
-      <main className="main">{children}</main>
+      <main className={theme ? "main theme-day" : "main"}>{children}</main>
       <Footer />
       <BackToTop />
     </>

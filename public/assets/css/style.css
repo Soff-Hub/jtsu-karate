@@ -8687,3 +8687,7 @@ body {
     height: 450px;
   }
 }
+ .theme-day{
+  filter: grayscale(100%);
+  background-color: #3d3e3f !important;
+ }

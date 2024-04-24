@@ -15,7 +15,7 @@ import SwitchButton from "../elements/SwitchButton";
 const HeaderNav = () => {
   const [scroll, setScroll] = useState(0);
   const [search, setSearch] = useState(null);
-  const { textSize, langauge } = useSelector((state) => state?.textClass);
+  const { textSize, langauge, theme } = useSelector((state) => state?.textClass);
   const [lang, setLang] = useState(langauge);
   const [searchResult, setSearchResult] = useState(null);
   const searchVal = useDebounce(search, 500);
@@ -75,7 +75,8 @@ const HeaderNav = () => {
     <>
       <header
         style={{
-          backgroundColor: "black",
+          backgroundColor:!theme ?  "black" : "#3d3e3f ",
+      
           margin: "0",
           padding: "0",
           height: "50px",
@@ -122,8 +123,8 @@ const HeaderNav = () => {
               </nav>
             </div>
 
-            <div className="d-flex gap-3 mx-3  w-full align-items-center justify-content-center ">
-              {/* <SwitchButton />  */}
+            <div className="d-flex gap-2 mx-3  w-full align-items-center justify-content-center ">
+              <SwitchButton /> 
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
