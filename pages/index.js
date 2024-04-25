@@ -84,7 +84,7 @@ export default function Home() {
 
                 <div className="text-center mt-50">
                   <h3 className="mb-10" style={{ color: "white" }}>
-                    {t("Sportchilarimiz")}
+                    {t("Iqtidorli sportchilarimiz")}
                   </h3>
                   <p style={{ color: "white", fontSize: textSize }}>
                     {t(
