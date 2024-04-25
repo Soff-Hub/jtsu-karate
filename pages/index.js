@@ -83,14 +83,12 @@ export default function Home() {
                 </div>
 
                 <div className="text-center mt-50">
-                  <h3 className="mb-10" style={{ color: "white" }}>
-                    {t("Iqtidorli sportchilarimiz")}
-                  </h3>
-                  <p style={{ color: "white", fontSize: textSize }}>
-                    {t(
-                      "Jahon arenalarida faxrli yutuqlarni egallab, Yurtimiz bayrog'ini ko'tarayotkan sportchilarimiz"
+                  <h5 className="mb-10" style={{ color: "white" }}>
+                  {t(
+                      "Jahon arenalarida faxrli yutuqlarni egallab, Yurtimiz bayrog'ini ko'tarayotkan iqtidorli sportchilarimiz"
                     )}
-                  </p>
+                  </h5>
+          
                 </div>
                 <div className="mb-70 mt-30">
                   <div className="box-topics box-topics-2 p-0 border-gray-800 bg-gray-850">
