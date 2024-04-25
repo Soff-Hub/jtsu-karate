@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export const baseUrl = "http://66.29.152.178/api/v1"
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 const client = Axios.create({
   baseURL: baseUrl,
