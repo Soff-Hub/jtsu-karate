@@ -66,7 +66,7 @@ const Sidebar = ({ openClass }) => {
                         }`}
                         href="/darsliklar"
                       >
-                        {t("Darsliklar")}
+                        {t("O'quv adabiyotlar")}
                       </Link>
                     </li>
                     <li>

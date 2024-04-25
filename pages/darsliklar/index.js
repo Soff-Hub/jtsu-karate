@@ -45,7 +45,7 @@ export default function Home() {
                 <div className="col-lg-12">
                   <>
                     <h2 className="color-linear d-inline-block mb-10">
-                      {t("Kitob va darsliklar")}
+                      {t("O'quv adabiyotlar")}
                     </h2>
                     <p className="text-lg color-gray-500">
                       {t(

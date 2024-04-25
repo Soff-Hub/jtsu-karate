@@ -107,7 +107,7 @@ export default function Home() {
                 <div className="row mt-60">
                   <div className="col-lg-12 mb-20 text-center">
                     <h3 className="color-linear d-inline-block mb-10">
-                      {t("Darsliklar")}
+                      {t("O'quv adabiyotlar")}
                     </h3>
                     <p
                       className="text-lg color-gray-500"
