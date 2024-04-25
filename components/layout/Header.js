@@ -55,7 +55,7 @@ const Header = ({ handleOpen, handleRemove, openClass }) => {
                     }`}
                     href="/"
                   >
-                    {t("Asosiy Sahifa")}
+                    {t("Asosiy sahifa")}
                   </Link>
                 </li>
                 <li>
