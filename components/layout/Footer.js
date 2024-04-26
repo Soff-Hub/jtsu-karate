@@ -55,7 +55,7 @@ const Footer = () => {
       <footer
         className="footer pt-30"
         style={{
-          backgroundColor: !theme ? "black" : "#3d3e3f ",
+          backgroundColor: !theme ? "" : "#3d3e3f ",
           filter: theme ? "grayscale(100%)" : "",
         }}
       >
