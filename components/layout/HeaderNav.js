@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -11,11 +11,14 @@ import client from "../../repositories/repository";
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguageData, setTextSize } from "../../store";
 import SwitchButton from "../elements/SwitchButton";
+import { AuthContext } from "../../context/AuthContext";
 
 const HeaderNav = () => {
   const [scroll, setScroll] = useState(0);
   const [search, setSearch] = useState(null);
-  const { textSize, langauge, theme } = useSelector((state) => state?.textClass);
+  const { textSize, langauge, theme } = useSelector(
+    (state) => state?.textClass
+  );
   const [lang, setLang] = useState(langauge);
   const [searchResult, setSearchResult] = useState(null);
   const searchVal = useDebounce(search, 500);
@@ -24,6 +27,7 @@ const HeaderNav = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const [openCancel, setOpenCancel] = useState(true);
+  const { user, logout } = useContext(AuthContext);
 
   const handleChangeLang = (lang) => {
     setLang(lang);
@@ -75,14 +79,12 @@ const HeaderNav = () => {
     <>
       <header
         style={{
-          backgroundColor:!theme ?  "black" : "#3d3e3f ",
-      
+          backgroundColor: !theme ? "black" : "#3d3e3f ",
+
           margin: "0",
           padding: "0",
           height: "50px",
-          ...(scroll
-            ? { position: "fixed", top: "0", zIndex: "1000" }
-            : {}),
+          ...(scroll ? { position: "fixed", top: "0", zIndex: "1000" } : {}),
         }}
         className="header sticky-bar"
       >
@@ -124,7 +126,7 @@ const HeaderNav = () => {
             </div>
 
             <div className="d-flex gap-2 mx-3  w-full align-items-center justify-content-center ">
-              <SwitchButton /> 
+              <SwitchButton />
               <div className="dropdown">
                 <button
                   className="btn dropdown-toggle"
@@ -270,16 +272,29 @@ const HeaderNav = () => {
                   <i className="fa-solid fa-search text-white"></i>
                 </strong>
               </div>
-              <div className="nav-main-menu d-none d-xl-block">
+              <div
+                className="nav-main-menu d-none d-xl-block"
+                onClick={() => {
+                  if (user) {
+                    if (router.pathname.startsWith("/profile")) {
+                      return logout();
+                    } else return router.push("/profile/user");
+                  } else return router.push("/profile/login");
+                }}
+              >
                 <div
                   className="btn btn-linear hover-up hover-shadow"
                   style={{ padding: "5px 10px", fontSize: "13px" }}
                 >
                   <strong
                     className="d-flex align-items-center gap-1 text-white"
-                    style={{ cursor: "not-allowed", fontSize: textSize }}
+                    style={{ fontSize: textSize }}
                   >
-                    {t("Kirish")}{" "}
+                    {!user
+                      ? t("Kirish")
+                      : router.pathname.startsWith("/profile")
+                      ? t("Chiqish")
+                      : t("Profil")}
                   </strong>
                 </div>
               </div>

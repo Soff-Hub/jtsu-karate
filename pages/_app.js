@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import client from "../repositories/repository";
 import store from "../store/store";
 import { Provider } from "react-redux";
+import { AuthProvider } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   const [isClient, setIsClient] = useState(false);
@@ -35,14 +36,15 @@ function MyApp({ Component, pageProps }) {
         localStorage.setItem("user_id", id);
         registerUser(id);
       }
-
     }
   }, [isClient]);
 
   return isClient ? (
     <>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </Provider>
     </>
   ) : (
