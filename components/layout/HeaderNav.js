@@ -71,9 +71,11 @@ const HeaderNav = () => {
     }
   }, [searchVal]);
 
+  console.log('langauge', i18n.language);
   useEffect(() => {
+    
     i18n.changeLanguage(langauge);
-  }, [lang]);
+  }, [lang, i18n.language]);
 
   return (
     <>

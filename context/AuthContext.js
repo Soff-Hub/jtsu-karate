@@ -36,12 +36,12 @@ const AuthProvider = ({ children }) => {
           setUser(response.data);
         })
         .catch(() => {
-          localStorage.clear();
+          localStorage.removeItem('token');
           setUser(null);
           router.replace("/profile/login");
         });
     } else {
-      window.localStorage.clear();
+      window.localStorage.removeItem('token');
     }
   };
 
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.clear();
+    localStorage.removeItem('token');
     router.push("/profile/login");
   };
 
