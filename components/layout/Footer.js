@@ -97,16 +97,6 @@ const Footer = () => {
                 <div className="mt-30 d-flex gap-4">
                   <span style={{ fontSize: "24px" }}>
                     {" "}
-                    <a
-                      target="_blank"
-                      href="https://www.facebook.com/uzdjtsu.uzdjtsu"
-                    >
-                      <i className="fa-brands fa-instagram text-danger "></i>
-                    </a>
-                  </span>
-
-                  <span style={{ fontSize: "24px" }}>
-                    {" "}
                     <a href="https://t.me/uzdjtsu_rasmiy" target="_blank">
                       <i
                         style={{ color: "#0088cc" }}
@@ -121,19 +111,6 @@ const Footer = () => {
                       <i
                         style={{ color: "#1DA1F2" }}
                         className="fa-brands fa-twitter "
-                      ></i>
-                    </a>
-                  </span>
-
-                  <span style={{ fontSize: "24px" }}>
-                    {" "}
-                    <a
-                      href="https://www.facebook.com/uzdjtsu.uzdjtsu"
-                      target="_blank"
-                    >
-                      <i
-                        style={{ color: "#1877F2" }}
-                        className="fa-brands fa-facebook-f"
                       ></i>
                     </a>
                   </span>

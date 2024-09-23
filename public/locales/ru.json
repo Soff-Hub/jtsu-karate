@@ -35,7 +35,7 @@
   "Biz 9:00 dan 21:00 gacha ishlaymiz (dam olish kunlaridan tashqari)": "Мы работаем с 9:00 до 21:00 (кроме выходных).",
   "Telefon nomeringiz": "Ваш номер телефона",
   "Yuborish": "Отправить",
-  "Kirish": "Входить",
+  "Kirish": "Вход",
   "Asosiy sayt": "Главный сайт",
   "Karate (yaponcha — hech narsasiz qoʻl bilan) — qurolsiz oʻzini-oʻzi himoya qilish, inson tanasining": "Каратэ (яп. – голыми руками) – безоружная самооборона, тело человека.",
   "nozik joylariga qoʻl yoki oyoq bilan zarbalar berishga asoslangan sport kurashining bir turi.": "вид спортивной борьбы, основанный на ударах руками или ногами по чувствительным местам.",
@@ -59,6 +59,7 @@
   "Qatnashgan sport nomi": "Название вида спорта",
   "Kategoriya": "Категория",
   "Sport turi": "Вид спорта",
-  "Mening imtiyozlarim": "Мои привилегии",
-  "Sizda imtiyozlar mavjud emas": "У вас нет привилегий"
+  "Mening imtiyozlarim": "Мои приоритеты",
+  "Sizda imtiyozlar mavjud emas": "У вас нет приоритеты",
+  "Chiqish": "Выход"
 }

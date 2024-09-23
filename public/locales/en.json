@@ -35,7 +35,7 @@
   "Biz 9:00 dan 21:00 gacha ishlaymiz (dam olish kunlaridan tashqari)": "We are open from 9:00 to 21:00 (except weekends)",
   "Telefon nomeringiz": "Your phone number",
   "Yuborish": "Send",
-  "Kirish": "Enter",
+  "Kirish": "Login",
   "Asosiy sayt": "Main web site",
   "Karate (yaponcha — hech narsasiz qoʻl bilan) — qurolsiz oʻzini-oʻzi himoya qilish, inson tanasining": "Karate (Japanese - with bare hands) - unarmed self-defense, human body",
   "nozik joylariga qoʻl yoki oyoq bilan zarbalar berishga asoslangan sport kurashining bir turi.": "a type of sport wrestling based on hand or foot strikes to sensitive areas.",
@@ -60,5 +60,6 @@
   "Kategoriya": "Category",
   "Sport turi": "Sport type",
   "Mening imtiyozlarim": "My privileges",
-  "Sizda imtiyozlar mavjud emas": "You have no privileges"
+  "Sizda imtiyozlar mavjud emas": "You have no privileges",
+  "Chiqish": "Logout"
 }
