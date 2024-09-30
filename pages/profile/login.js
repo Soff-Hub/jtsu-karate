@@ -1,21 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../context/AuthContext";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const { t } = useTranslation();
-  const [pinfl, setPinfl] = useState("");
-  const { login } = useContext(AuthContext);
+  const { initAuth } = useContext(AuthContext);
   const [error, setError] = useState(null);
+  const { query, push } = useRouter();
 
   const showErrorClbck = (err) => {
     setError(err.response?.data?.error);
   };
 
-  const handleLogin = async () => {
-    await login({ pinfl }, showErrorClbck);
+  const handleLogin = async (token) => {
+    // await login({ pinfl }, showErrorClbck);
+
+    localStorage.setItem("token", token);
+    await initAuth();
+    push("/profile/user");
   };
+
+  useEffect(() => {
+    if (query?.error_msg) {
+      setError(query?.error_msg);
+    } else if (query?.token) {
+      handleLogin(query?.token);
+    }
+  }, [query]);
 
   return (
     <Layout>
@@ -28,39 +42,24 @@ export default function Login() {
           <form
             className="mx-auto"
             style={{ maxWidth: "360px" }}
-            onSubmit={(e) => (e.preventDefault(), handleLogin())}
+            onSubmit={(e) => e.preventDefault()}
           >
-            <div className="form-group">
-              <input
-                required
-                className="border-gray-500 px-3 py-2 fs-6 w-100"
-                placeholder={t("PINFL raqamingiz")}
-                style={{
-                  lineHeight: "24px",
-                  borderRadius: "8px",
-                  appearance: "none",
-                }}
-                value={pinfl}
-                onChange={(e) => {
-                  setPinfl(e.target.value);
-                  setError(null);
-                }}
-                autoComplete="off"
-                name="pinfl"
-                maxLength={14}
-              />
-              <p style={{ color: "red" }}>{error ? error : ""}</p>
-            </div>
-
+            <p className="text-danger">{error}</p>
             <div className="form-group mt-20">
-              <button
+              <Link
+                href={
+                  "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=karate-jtsu_uz&redirect_uri=https://admin.karate-jtsu.uz/oneid&scope=myportal&state=testState"
+                }
                 className="btn btn-linear hover-up w-100 py-2"
                 type="submit"
-                style={{ lineHeight: "24px" }}
+                style={{ lineHeight: "24px", backgroundColor: "#0061d9" }}
               >
-                {t("Kirish")}
-                <i className="fi-rr-arrow-small-right" />
-              </button>
+                <img
+                  src="/assets/oneid.svg"
+                  height={28}
+                  style={{ verticalAlign: "middle" }}
+                />
+              </Link>
             </div>
           </form>
         </div>
