@@ -1,16 +1,18 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../../components/layout/Layout";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import client from "../../repositories/repository";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Home() {
   const [video, setVideo] = useState(null);
   const { textSize, langauge } = useSelector((state) => state?.textClass);
 
   const { query } = useRouter();
+  const { user } = useContext(AuthContext);
 
   async function getVideos() {
     try {
@@ -26,22 +28,26 @@ export default function Home() {
   }
 
   const handleDownload = async (file, id) => {
-    await client.get(`common/download-count/${id}/textbook/`, {
-      headers: {
-        "Accept-language": langauge,
-      },
-    });
-    await getVideos();
+    if (user) {
+      await client.get(`common/download-count/${id}/textbook/`, {
+        headers: {
+          "Accept-language": langauge,
+        },
+      });
+      await getVideos();
 
-    var link = document.createElement("a");
-    link.href = file;
+      var link = document.createElement("a");
+      link.href = file;
 
-    link.setAttribute("download", file);
+      link.setAttribute("download", file);
 
-    document.body.appendChild(link);
-    link.click();
+      document.body.appendChild(link);
+      link.click();
 
-    document.body.removeChild(link);
+      document.body.removeChild(link);
+    } else {
+      Router.push(`/profile/login?returnUrl=${Router.asPath}`);
+    }
   };
 
   useEffect(() => {
@@ -78,7 +84,11 @@ export default function Home() {
                       </div>
 
                       <p
-                        style={{ fontSize: textSize, lineHeight: "26px",textAlign:"justify" }}
+                        style={{
+                          fontSize: textSize,
+                          lineHeight: "26px",
+                          textAlign: "justify",
+                        }}
                         className="color-gray-500 mb-50"
                       >
                         {video?.description}

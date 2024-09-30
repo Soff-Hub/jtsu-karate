@@ -20,6 +20,9 @@ export default function Login() {
 
     localStorage.setItem("token", token);
     await initAuth();
+    if (localStorage.getItem('returnUrl')) {
+      return push(localStorage.getItem('returnUrl'));
+    }
     push("/profile/user");
   };
 
@@ -28,6 +31,10 @@ export default function Login() {
       setError(query?.error_msg);
     } else if (query?.token) {
       handleLogin(query?.token);
+    }
+
+    if (query?.returnUrl) {
+      localStorage.setItem("returnUrl", query?.returnUrl);
     }
   }, [query]);
 
